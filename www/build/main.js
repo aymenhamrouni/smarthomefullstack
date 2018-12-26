@@ -966,22 +966,22 @@ var RegisterPage = (function () {
         this.forgotCtrl = forgotCtrl;
         this.toastCrtl = toastCrtl;
         this._service = _service;
-        this.pageTitle = 'Registration';
+        this.pageTitle = "Registration";
         this.user = {};
         this.registerForm = {};
         this.registerForm = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormGroup */]({
-            codigo: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
-            name: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
-            address: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
-            email: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].compose([
+            codigo: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
+            name: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
+            address: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
+            email: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].compose([
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required,
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].pattern("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$")
             ])),
-            password: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]('', __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].compose([
+            password: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].compose([
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required,
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].maxLength(10),
-                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].minLength(5),
-            ])),
+                __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].minLength(5)
+            ]))
         });
     }
     // register and go to home page
@@ -1015,23 +1015,23 @@ var RegisterPage = (function () {
         }
     };
     RegisterPage.prototype.login = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_0__login_login__["a" /* LoginPage */]);
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_0__login_login__["a" /* LoginPage */], { willingly: true });
     };
     RegisterPage.prototype.useToast = function (msg, time) {
         var toast = this.toastCrtl.create({
             message: msg,
             duration: time,
-            position: 'top',
-            cssClass: 'dark-trans',
-            closeButtonText: 'OK',
+            position: "top",
+            cssClass: "dark-trans",
+            closeButtonText: "OK",
             showCloseButton: true
         });
         toast.present();
     };
     RegisterPage.prototype.confirmResponse = function (data) {
-        console.log('server response:' + data);
-        if (data[1] == 'ok') {
-            this.useToast('¡Registro creado correctamente!', 5000);
+        console.log("server response:" + data);
+        if (data[1] == "ok") {
+            this.useToast("¡Registro creado correctamente!", 5000);
             return true;
         }
         else {
@@ -1043,14 +1043,12 @@ var RegisterPage = (function () {
 }());
 RegisterPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
-        selector: 'page-register',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\register\register.html"*/'<!-- -->\n<ion-content class="auth-page">\n  <div class="login-content">\n\n    <!-- Logo -->\n    <div text-center class="animated fadeInDown">\n        <div class="logo-chico"></div>\n        <h4 ion-text class="text-primary">\n          <strong>Register Your Home</strong>\n        </h4>\n      </div>\n\n    <!-- Login form -->\n    <div class="list-form" [formGroup]="registerForm">\n\n        <ion-item>\n            <ion-label floating>\n              <ion-icon name="code" item-start class="text-primary"></ion-icon>\n              Home Code*\n              </ion-label>\n            <ion-input type="text" formControlName="codigo"></ion-input>\n        </ion-item>\n\n      <ion-item>\n          <ion-label floating>\n            <ion-icon name="home" item-start class="text-primary"></ion-icon>\n            Street Address*\n            </ion-label>\n          <ion-input type="text" formControlName="address"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="person" item-start class="text-primary"></ion-icon>\n          Full Name*\n        </ion-label>\n        <ion-input type="text" formControlName="name"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="mail" item-start class="text-primary"></ion-icon>\n          Email*\n        </ion-label>\n        <ion-input type="email" formControlName="email" class="form-control"></ion-input>\n      </ion-item>\n      <!--<div class="validation-errors">\n          <ng-container *ngFor="let validation of validation_messages.email" >\n            <div class="error-message" *ngIf="validations_form.get(\'email\').hasError(validation.type) && (validations_form.get(\'email\').dirty || validations_form.get(\'email\').touched)">\n          {{ validation.message }}\n            </div>\n          </ng-container>\n        </div>-->\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n          Password (Min 5 Character)\n        </ion-label>\n        <ion-input type="password" formControlName="password"></ion-input>\n      </ion-item>\n\n    </div>\n\n    <div margin-top>\n      <button ion-button block color="dark" tappable (click)="register()">\n        SIGN UP\n      </button>\n\n    </div>\n\n    <!-- Other links -->\n    <div text-center margin-top padding-bottom>\n      <span ion-text color="primary" tappable (click)="login()">You already have an account ?</span>\n    </div>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\register\register.html"*/
+        selector: "page-register",template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\register\register.html"*/'<!-- -->\n<ion-content class="auth-page">\n  <div class="login-content">\n\n    <!-- Logo -->\n    <div text-center class="animated fadeInDown">\n        <div class="logo-chico"></div>\n        <h4 ion-text class="text-primary">\n          <strong>Register Your Home</strong>\n        </h4>\n      </div>\n\n    <!-- Login form -->\n    <div class="list-form" [formGroup]="registerForm">\n\n        <ion-item>\n            <ion-label floating>\n              <ion-icon name="code" item-start class="text-primary"></ion-icon>\n              Home Code*\n              </ion-label>\n            <ion-input type="text" formControlName="codigo"></ion-input>\n        </ion-item>\n\n      <ion-item>\n          <ion-label floating>\n            <ion-icon name="home" item-start class="text-primary"></ion-icon>\n            Street Address*\n            </ion-label>\n          <ion-input type="text" formControlName="address"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="person" item-start class="text-primary"></ion-icon>\n          Full Name*\n        </ion-label>\n        <ion-input type="text" formControlName="name"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="mail" item-start class="text-primary"></ion-icon>\n          Email*\n        </ion-label>\n        <ion-input type="email" formControlName="email" class="form-control"></ion-input>\n      </ion-item>\n      <!--<div class="validation-errors">\n          <ng-container *ngFor="let validation of validation_messages.email" >\n            <div class="error-message" *ngIf="validations_form.get(\'email\').hasError(validation.type) && (validations_form.get(\'email\').dirty || validations_form.get(\'email\').touched)">\n          {{ validation.message }}\n            </div>\n          </ng-container>\n        </div>-->\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n          Password (Min 5 Character)\n        </ion-label>\n        <ion-input type="password" formControlName="password"></ion-input>\n      </ion-item>\n\n    </div>\n\n    <div margin-top>\n      <button ion-button block color="dark" tappable (click)="register()">\n        SIGN UP\n      </button>\n\n    </div>\n\n    <!-- Other links -->\n    <div text-center margin-top padding-bottom>\n      <span ion-text color="primary" tappable (click)="login()">You already have an account ?</span>\n    </div>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\register\register.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */],
-        __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */]) === "function" && _d || Object])
 ], RegisterPage);
 
+var _a, _b, _c, _d;
 //# sourceMappingURL=register.js.map
 
 /***/ }),
@@ -1549,8 +1547,12 @@ var MyApp = (function () {
         this.rootPage = __WEBPACK_IMPORTED_MODULE_7__pages_login_login__["a" /* LoginPage */];
         this.initializeApp();
         this.appMenuItems = [
-            { title: 'Home', component: __WEBPACK_IMPORTED_MODULE_1__pages_home_home__["a" /* HomePage */], icon: 'home' },
-            { title: 'Local Weather', component: __WEBPACK_IMPORTED_MODULE_8__pages_local_weather_local_weather__["a" /* LocalWeatherPage */], icon: 'partly-sunny' }
+            { title: "Home", component: __WEBPACK_IMPORTED_MODULE_1__pages_home_home__["a" /* HomePage */], icon: "home" },
+            {
+                title: "Local Weather",
+                component: __WEBPACK_IMPORTED_MODULE_8__pages_local_weather_local_weather__["a" /* LocalWeatherPage */],
+                icon: "partly-sunny"
+            }
         ];
     }
     MyApp.prototype.initializeApp = function () {
@@ -1573,10 +1575,10 @@ var MyApp = (function () {
         this.nav.setRoot(page.component);
     };
     MyApp.prototype.logout = function () {
+        localStorage.clear();
         this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_7__pages_login_login__["a" /* LoginPage */]);
     };
-    MyApp.prototype.cambiarContrasena = function () {
-    };
+    MyApp.prototype.cambiarContrasena = function () { };
     MyApp.prototype.menuPrincipal = function () {
         this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_1__pages_home_home__["a" /* HomePage */]);
     };
@@ -1587,17 +1589,15 @@ var MyApp = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */]) === "function" && _a || Object)
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\app\app.html"*/'<ion-menu side="left" id="authenticated" [content]="content">\n  <ion-header>\n    <ion-toolbar class="user-profile">\n\n      <ion-grid>\n        <ion-row>\n          <ion-col col-4>\n              <div class="user-avatar">\n                <img src="assets/img/logo-inicio.png" alt="logo-inicio">\n              </div>\n          </ion-col>\n          <ion-col padding-top col-8>\n            <h2 ion-text class="no-margin bold text-white">\n              Smart Home Security\n            </h2>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content class="common-bg-2">\n\n    <ion-grid>\n        <ion-row no-padding class="other-data">\n            <ion-col no-padding class="column">\n              <button ion-button icon-left small full color="light" menuClose (click)="menuPrincipal()">\n                <ion-icon name="home"></ion-icon>\n                Menu Principal\n              </button>\n            </ion-col>\n        </ion-row>\n\n        <ion-row no-padding class="other-data">\n          <ion-col no-padding class="column">\n            <button ion-button icon-left small full color="light" menuClose (click)="registroVisitas()">\n              <ion-icon name="archive"></ion-icon>\n                Registro de Visitas\n            </button>\n          </ion-col>\n      </ion-row>\n\n        <ion-row no-padding class="other-data">\n            <ion-col no-padding class="column">\n              <button ion-button icon-left small full color="light" menuClose (click)="logout()">\n                <ion-icon name="log-out"></ion-icon>\n                Cerrar Sesión\n              </button>\n            </ion-col>\n          </ion-row>\n    </ion-grid>\n\n  </ion-content>\n\n</ion-menu>\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\app\app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */],
-        __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
-        __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */],
-        __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */]])
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */]) === "function" && _e || Object])
 ], MyApp);
 
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -1629,7 +1629,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var LoginPage = (function () {
-    function LoginPage(nav, forgotCtrl, menu, toastCtrl, loading, _service, _global) {
+    function LoginPage(navParams, nav, forgotCtrl, menu, toastCtrl, loading, _service, _global) {
+        this.navParams = navParams;
         this.nav = nav;
         this.forgotCtrl = forgotCtrl;
         this.menu = menu;
@@ -1639,17 +1640,28 @@ var LoginPage = (function () {
         this._global = _global;
         this.pageTitle = "Login";
         this.user = {};
-        this.loader = this.loading.create({
-            content: "Loading...",
-        });
         this._global.UserEmail = null;
         this._global.UserName = null;
         this._global.UserLocation = null;
         this.menu.swipeEnable(false);
+        if (localStorage.getItem("userData")) {
+            this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
+        }
+        else if (!localStorage.getItem("UserExists") &&
+            !navParams.get("willingly")) {
+            this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* RegisterPage */]);
+        }
     }
+    LoginPage.prototype.loadingCreate = function () {
+        this.loader = this.loading.create({
+            content: "Loading..."
+            //duration : 1500
+        });
+        return this.loader.present();
+    };
     LoginPage.prototype.onSubmit = function () {
         var _this = this;
-        this.loader.present().then(function () {
+        this.loadingCreate().then(function () {
             _this.validateUser();
         });
     };
@@ -1660,11 +1672,12 @@ var LoginPage = (function () {
             console.log(d);
             _this.r = _this.confirmResponse(d);
             if (_this.r) {
-                console.log('r value: ' + _this.r);
+                console.log("r value: " + _this.r);
                 _this._global.UserEmail = d[1];
                 _this._global.UserName = d[2];
                 _this._global.UserLocation = d[3];
                 _this.loader.dismiss();
+                localStorage.setItem("userData", JSON.stringify(d));
                 _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
             }
             else {
@@ -1692,26 +1705,26 @@ var LoginPage = (function () {
     LoginPage.prototype.forgotPass = function () {
         var _this = this;
         var forgot = this.forgotCtrl.create({
-            title: 'Olvido su contraseña?',
+            title: "Olvido su contraseña?",
             message: "Ingrese su email para recordarle sus credenciales de acceso.",
             inputs: [
                 {
-                    name: 'email',
-                    placeholder: 'Email',
-                    type: 'email'
-                },
+                    name: "email",
+                    placeholder: "Email",
+                    type: "email"
+                }
             ],
             buttons: [
                 {
-                    text: 'Cancelar',
+                    text: "Cancelar",
                     handler: function (data) {
-                        console.log('Cancel clicked');
+                        console.log("Cancel clicked");
                     }
                 },
                 {
-                    text: 'Enviar',
+                    text: "Enviar",
                     handler: function (data) {
-                        console.log('Send clicked');
+                        console.log("Send clicked");
                         _this.mandarCorreo(data);
                     }
                 }
@@ -1723,7 +1736,7 @@ var LoginPage = (function () {
         var _this = this;
         this._service.RecoverPassword(data).subscribe(function (d) {
             if (d != undefined) {
-                _this.useToast('Se ha enviado un correo a la dirección indicada con sus credenciales. Favor de verificar.', 3000);
+                _this.useToast("Se ha enviado un correo a la dirección indicada con sus credenciales. Favor de verificar.", 3000);
             }
         });
     };
@@ -1731,9 +1744,9 @@ var LoginPage = (function () {
         var toast = this.toastCtrl.create({
             message: msg,
             duration: time,
-            position: 'top',
-            cssClass: 'dark-trans',
-            closeButtonText: 'OK',
+            position: "top",
+            cssClass: "dark-trans",
+            closeButtonText: "OK",
             showCloseButton: true
         });
         toast.present();
@@ -1742,17 +1755,12 @@ var LoginPage = (function () {
 }());
 LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
-        selector: 'page-login',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\login\login.html"*/'<!-- -->\n \n<ion-content padding class="animated fadeIn login auth-page">\n  <div class="login-content">\n\n    <!-- Logo -->\n    <div text-center class="animated fadeInDown">\n      <div class="logo"></div>\n      <h2 ion-text class="text-primary">\n        <strong>¡Welcome!</strong>\n      </h2>\n    </div>\n\n    <!-- Login form -->\n    <form #userLoginForm="ngForm" class="list-form">\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="mail" item-start class="text-primary"></ion-icon>\n          Email\n        </ion-label>\n        <ion-input type="email" #Email="ngModel" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" required></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n          Password\n        </ion-label>\n        <ion-input type="password" #Password="ngModel" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" required></ion-input>\n      </ion-item>\n    </form>\n\n    <p text-right ion-text color="primary" tappable (click)="forgotPass()"><strong>Forget password ?</strong></p>\n\n    <div>\n      <button ion-button icon-start block color="dark" tappable (click)="onSubmit()">\n        <ion-icon name="log-in"></ion-icon>\n        LOG IN\n      </button>\n\n    </div>\n\n\n    <!-- Other links -->\n    <div text-center margin-top>\n      <span ion-text color="primary" tappable (click)="register()">Not a user? <strong>Register here!</strong></span>\n    </div>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\login\login.html"*/
+        selector: "page-login",template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\login\login.html"*/'<!-- -->\n\n\n\n<ion-content padding class="animated fadeIn login auth-page">\n\n  <div class="login-content">\n\n    <!-- Logo -->\n\n    <div text-center class="animated fadeInDown">\n\n      <div class="logo"></div>\n\n      <h2 ion-text class="text-primary"><strong>Welcome!</strong></h2>\n\n    </div>\n\n\n\n    <!-- Login form -->\n\n    <form #userLoginForm="ngForm" class="list-form">\n\n      <ion-item>\n\n        <ion-label floating>\n\n          <ion-icon name="mail" item-start class="text-primary"></ion-icon>\n\n          Email\n\n        </ion-label>\n\n        <ion-input\n\n          type="email"\n\n          #Email="ngModel"\n\n          [(ngModel)]="user.email"\n\n          [ngModelOptions]="{ standalone: true }"\n\n          required\n\n        ></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label floating>\n\n          <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n\n          Password\n\n        </ion-label>\n\n        <ion-input\n\n          type="password"\n\n          #Password="ngModel"\n\n          [(ngModel)]="user.password"\n\n          [ngModelOptions]="{ standalone: true }"\n\n          required\n\n        ></ion-input>\n\n      </ion-item>\n\n    </form>\n\n\n\n    <p text-right ion-text color="primary" tappable (click)="forgotPass()">\n\n      <strong>Forget password ?</strong>\n\n    </p>\n\n\n\n    <div>\n\n      <button\n\n        ion-button\n\n        icon-start\n\n        block\n\n        color="dark"\n\n        tappable\n\n        (click)="onSubmit()"\n\n      >\n\n        <ion-icon name="log-in"></ion-icon>\n\n        LOG IN\n\n      </button>\n\n    </div>\n\n\n\n    <!-- Other links -->\n\n    <div text-center margin-top>\n\n      <span ion-text color="primary" tappable (click)="register()"\n\n        >Not a user? <strong>Register here!</strong></span\n\n      >\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\login\login.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* MenuController */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */],
-        __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavParams */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* MenuController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]) === "function" && _h || Object])
 ], LoginPage);
 
+var _a, _b, _c, _d, _e, _f, _g, _h;
 //# sourceMappingURL=login.js.map
 
 /***/ }),
