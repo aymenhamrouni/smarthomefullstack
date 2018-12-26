@@ -1,0 +1,71 @@
+<!-- -->
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <p>Smart Home Security</p>
+    </ion-title>
+<!--     <ion-buttons end>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn common-bg">
+
+  <button ion-button full tappable (click)="acceso()">
+    <ion-icon name="key"></ion-icon>
+    <div style="padding-left: 100px">Conceder Acceso</div>
+  </button>
+
+
+
+  
+    <div cards>
+
+        <div class="grid-full">
+          <ion-row>
+            <ion-col>
+             
+                
+                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/cameras.png"/>
+              
+                
+      <div  class="image" >Surveillance Cameras</div>
+              
+            </ion-col>
+    
+            <ion-col>
+                <img  class="image" (click)="goToFireSensor()" src="../../assets/img/fire.png"/>
+                <div  class="image" >Fire Sensors Stats</div>
+                 </ion-col> 
+    
+            <ion-col>
+                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/doors.png"/>
+                <div  class="image" >Doors Sensors Stats</div>
+            </ion-col>
+    
+            <ion-col>
+                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/windows.png"/>
+                <div  class="image" >Winsows Sensors Stats</div>
+            </ion-col>
+          </ion-row>
+        </div>
+    
+      </div>
+      <ion-list>
+
+        <ion-item>
+          <ion-label>Doors Sensor Status</ion-label>
+          <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
+        </ion-item>
+      
+      </ion-list>
+
+
+
+</ion-content>
