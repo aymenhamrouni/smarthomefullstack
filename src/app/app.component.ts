@@ -1,25 +1,24 @@
-import { VisitsPage } from './../pages/visits/visits';
-import { HomePage } from './../pages/home/home';
+import { VisitsPage } from "./../pages/visits/visits";
+import { HomePage } from "./../pages/home/home";
 import { Component, ViewChild } from "@angular/core";
 import { Platform, Nav } from "ionic-angular";
 
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { Keyboard } from '@ionic-native/keyboard';
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { Keyboard } from "@ionic-native/keyboard";
 
 import { LoginPage } from "../pages/login/login";
 import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 
 export interface MenuItem {
-    title: string;
-    component: any;
-    icon: string;
+  title: string;
+  component: any;
+  icon: string;
 }
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: "app.html"
 })
-
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
@@ -36,8 +35,12 @@ export class MyApp {
     this.initializeApp();
 
     this.appMenuItems = [
-      {title: 'Home', component: HomePage, icon: 'home'},
-      {title: 'Local Weather', component: LocalWeatherPage, icon: 'partly-sunny'}
+      { title: "Home", component: HomePage, icon: "home" },
+      {
+        title: "Local Weather",
+        component: LocalWeatherPage,
+        icon: "partly-sunny"
+      }
     ];
   }
 
@@ -65,18 +68,17 @@ export class MyApp {
   }
 
   logout() {
+    localStorage.clear();
     this.nav.setRoot(LoginPage);
   }
 
-  cambiarContrasena(){
+  cambiarContrasena() {}
 
-  }
-
-  menuPrincipal(){
+  menuPrincipal() {
     this.nav.setRoot(HomePage);
   }
 
-  registroVisitas(){
+  registroVisitas() {
     this.nav.setRoot(VisitsPage);
   }
 }
