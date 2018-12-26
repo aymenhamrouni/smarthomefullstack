@@ -9,6 +9,7 @@ import { Keyboard } from "@ionic-native/keyboard";
 
 import { LoginPage } from "../pages/login/login";
 import { LocalWeatherPage } from "../pages/local-weather/local-weather";
+import { Socket } from "ng-socket-io";
 
 export interface MenuItem {
   title: string;
@@ -30,7 +31,8 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public keyboard: Keyboard
+    public keyboard: Keyboard,
+    private socket: Socket
   ) {
     this.initializeApp();
 
@@ -69,6 +71,7 @@ export class MyApp {
 
   logout() {
     localStorage.clear();
+    this.socket.disconnect();
     this.nav.setRoot(LoginPage);
   }
 

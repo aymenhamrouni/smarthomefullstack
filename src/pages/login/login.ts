@@ -37,7 +37,6 @@ export class LoginPage {
     this._global.UserEmail = null;
     this._global.UserName = null;
     this._global.UserLocation = null;
-
     this.menu.swipeEnable(false);
     if (localStorage.getItem("userData")) {
       this.nav.setRoot(HomePage);
