@@ -1,34 +1,35 @@
-import { VisitsPage } from './../pages/visits/visits';
-import { GlobalService } from './../services/global';
-import { VisitService } from './../services/visit';
-import { CodigoQrPage } from './../pages/codigo-qr/codigo-qr';
-import { LoginService } from './../services/login';
-import { FormsModule } from '@angular/forms';
-import {NgModule} from "@angular/core";
-import {IonicApp, IonicModule} from "ionic-angular";
-import {BrowserModule} from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
-import {IonicStorageModule} from '@ionic/storage';
-import {StatusBar} from '@ionic-native/status-bar';
-import {SplashScreen} from '@ionic-native/splash-screen';
-import {Keyboard} from '@ionic-native/keyboard';
-import {WeatherProvider} from "../services/weather";
-import {MyApp} from "./app.component";
-import {SettingsPage} from "../pages/settings/settings";
-import {HomePage} from "../pages/home/home";
-import {LoginPage} from "../pages/login/login";
-import {NotificationsPage} from "../pages/notifications/notifications";
-import {RegisterPage} from "../pages/register/register";
-import {LocalWeatherPage} from "../pages/local-weather/local-weather";
-import {AccesoPage} from "../pages/acceso/acceso"; 
-import {HttpModule} from '@angular/http';
-import {QRCodeModule} from 'angularx-qrcode'; 
-import {SocialSharing} from "@ionic-native/social-sharing";
-import {Screenshot} from "@ionic-native/screenshot";
+import { VisitsPage } from "./../pages/visits/visits";
+import { GlobalService } from "./../services/global";
+import { ModifyService } from "./../services/modify";
+import { VisitService } from "./../services/visit";
+import { CodigoQrPage } from "./../pages/codigo-qr/codigo-qr";
+import { LoginService } from "./../services/login";
+import { FormsModule } from "@angular/forms";
+import { NgModule } from "@angular/core";
+import { IonicApp, IonicModule } from "ionic-angular";
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
+import { IonicStorageModule } from "@ionic/storage";
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { Keyboard } from "@ionic-native/keyboard";
+import { WeatherProvider } from "../services/weather";
+import { MyApp } from "./app.component";
+import { SettingsPage } from "../pages/settings/settings";
+import { HomePage } from "../pages/home/home";
+import { LoginPage } from "../pages/login/login";
+import { NotificationsPage } from "../pages/notifications/notifications";
+import { RegisterPage } from "../pages/register/register";
+import { LocalWeatherPage } from "../pages/local-weather/local-weather";
+import { AccesoPage } from "../pages/acceso/acceso";
+import { HttpModule } from "@angular/http";
+import { QRCodeModule } from "angularx-qrcode";
+import { SocialSharing } from "@ionic-native/social-sharing";
+import { Screenshot } from "@ionic-native/screenshot";
 import { StreamfeedPage } from "../pages/streamfeed/streamfeed";
 import { FiresensorsPage } from "../pages/firesensors/firesensors";
 import { SocketIoModule, SocketIoConfig } from "ng-socket-io";
-const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
+const config: SocketIoConfig = { url: "http://192.168.1.9:3000", options: {} };
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
     LoginPage,
     LocalWeatherPage,
     NotificationsPage,
-    RegisterPage,    
+    RegisterPage,
     AccesoPage,
     CodigoQrPage,
     VisitsPage,
@@ -57,8 +58,8 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
       autoFocusAssist: false
     }),
     IonicStorageModule.forRoot({
-      name: '_mdc_HomeSecurity',
-        driverOrder: ['indexeddb', 'sqlite', 'websql']
+      name: "_mdc_HomeSecurity",
+      driverOrder: ["indexeddb", "sqlite", "websql"]
     }),
     QRCodeModule
   ],
@@ -70,7 +71,7 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
     LoginPage,
     LocalWeatherPage,
     NotificationsPage,
-    RegisterPage,    
+    RegisterPage,
     AccesoPage,
     CodigoQrPage,
     VisitsPage,
@@ -80,15 +81,14 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
   providers: [
     StatusBar,
     SplashScreen,
-    Keyboard,    
+    Keyboard,
     WeatherProvider,
     LoginService,
     VisitService,
     GlobalService,
     Screenshot,
-    SocialSharing
+    SocialSharing,
+    ModifyService
   ]
 })
-
-export class AppModule {
-}
+export class AppModule {}

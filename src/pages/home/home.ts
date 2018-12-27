@@ -1,19 +1,18 @@
-import { GlobalService } from './../../services/global';
-import { AccesoPage } from './../acceso/acceso';
-import {Component} from "@angular/core";
-import {NavController, PopoverController} from "ionic-angular";
-import {NotificationsPage} from "../notifications/notifications";
-import {SettingsPage} from "../settings/settings";
-import { StreamfeedPage } from './../streamfeed/streamfeed'
-import { FiresensorsPage } from '../firesensors/firesensors';
+import { GlobalService } from "./../../services/global";
+import { AccesoPage } from "./../acceso/acceso";
+import { Component } from "@angular/core";
+import { NavController, PopoverController } from "ionic-angular";
+import { NotificationsPage } from "../notifications/notifications";
+import { SettingsPage } from "../settings/settings";
+import { StreamfeedPage } from "./../streamfeed/streamfeed";
+import { FiresensorsPage } from "../firesensors/firesensors";
 import { Socket } from "ng-socket-io";
 import { LoginService } from "./../../services/login";
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: "page-home",
+  templateUrl: "home.html"
 })
-
 export class HomePage {
   public isToggled: boolean;
   Home = {
@@ -21,7 +20,7 @@ export class HomePage {
   };
   Mono: number = 0;
   Duo: number = 0;
-  Temp : number=0;
+  Temp: number = 0;
   username = this._global.UserName;
   location = this._global.UserLocation;
 
@@ -30,11 +29,16 @@ export class HomePage {
     this.socket.connect();
     this.socket.on("home_1", msg => {
       this.Home.WindowsSensors = JSON.parse(msg.payload).WindowsSensors;
+
+      if (this.Home.WindowsSensors.toString() === "0") {
+        this.isToggled = false;
+      } else {
+        this.isToggled = true;
+      }
       this.Mono = JSON.parse(msg.payload).CarbonMonoxide;
       this.Duo = JSON.parse(msg.payload).CarbonDioxide;
-      this.Temp= JSON.parse(msg.payload).Temp;
+      this.Temp = JSON.parse(msg.payload).Temp;
       console.log(msg);
-      
     });
   }
 
@@ -51,18 +55,21 @@ export class HomePage {
     });
   }
   goToStreamFeed() {
-    this.nav.setRoot(StreamfeedPage);
-
+    this.nav.push(StreamfeedPage);
   }
   goToFireSensor() {
-    this.nav.setRoot(FiresensorsPage, { mono: this.Mono, duo: this.Duo , temp: this.Temp });
+    this.nav.push(FiresensorsPage, {
+      mono: this.Mono,
+      duo: this.Duo,
+      temp: this.Temp
+    });
   }
 
   // go to register page
   acceso() {
-   this.nav.setRoot(AccesoPage);
-
+    this.nav.setRoot(AccesoPage);
   }
+
   public notify() {
 
     

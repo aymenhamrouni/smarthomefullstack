@@ -31,7 +31,7 @@ export class LoginPage {
     public menu: MenuController,
     public toastCtrl: ToastController,
     public loading: LoadingController,
-    private _service: LoginService,
+    public _service: LoginService,
     public _global: GlobalService
   ) {
     this._global.UserEmail = null;
@@ -47,6 +47,10 @@ export class LoginPage {
       navParams.data
       this.nav.setRoot(RegisterPage);
     }
+    var that = this;
+    setInterval(function() {
+      that._service.RefreshToken().subscribe();
+    }, 900000);
   }
 
   loadingCreate() {
