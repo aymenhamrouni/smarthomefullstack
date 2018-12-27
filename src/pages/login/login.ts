@@ -37,14 +37,14 @@ export class LoginPage {
     this._global.UserEmail = null;
     this._global.UserName = null;
     this._global.UserLocation = null;
-
     this.menu.swipeEnable(false);
+    console.log(navParams.get("willingly"));
     if (localStorage.getItem("userData")) {
       this.nav.setRoot(HomePage);
     } else if (
-      !localStorage.getItem("UserExists") &&
-      !navParams.get("willingly")
+      ((!localStorage.getItem("UserId")) && (navParams.get("willingly")==="false"))
     ) {
+      navParams.data
       this.nav.setRoot(RegisterPage);
     }
   }

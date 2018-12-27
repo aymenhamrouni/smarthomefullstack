@@ -22,10 +22,10 @@ export class RegisterPage {
     private _service: LoginService
   ) {
     this.registerForm = new FormGroup({
-      codigo: new FormControl("", Validators.required),
-      name: new FormControl("", Validators.required),
+      homeId: new FormControl("", Validators.required),
+      userName: new FormControl("", Validators.required),
       address: new FormControl("", Validators.required),
-      email: new FormControl(
+      email: new FormControl( 
         "",
         Validators.compose([
           Validators.required,
@@ -45,7 +45,8 @@ export class RegisterPage {
 
   // register and go to home page
   register() {
-    if (this.ValidateUser()) {
+    
+    if (this.ValidateUser()==="allclear") {
       this._service.RegisterUser(this.user).subscribe(d => {
         this.r = this.confirmResponse(d);
         if (this.r) {
@@ -53,27 +54,31 @@ export class RegisterPage {
         }
       });
     } else {
+
+      console.log("aaa");
       this.useToast(
-        "Favor de validar y capturar todos los campos requeridos",
+        this.ValidateUser(),
         5000
       );
     }
   }
 
   ValidateUser() {
-    console.log(this.registerForm.invalid);
-
-    if (this.registerForm.invalid) return false;
+    if (this.registerForm.controls.homeId.invalid) return "Home Code is Invalid!";
+    else if(this.registerForm.controls.address.invalid) return "Address is Invalid!";
+    else if(this.registerForm.controls.userName.invalid) return "Username is Invalid!";
+    else if(this.registerForm.controls.email.invalid) return "Email is Invalid!";
+    else if(this.registerForm.controls.password.invalid) return "Password is Invalid!";
     else {
       this.user = {
-        Name: this.registerForm.controls.name.value,
-        Email: this.registerForm.controls.email.value,
-        Password: this.registerForm.controls.password.value,
-        Address: this.registerForm.controls.address.value,
-        ActivationKey: this.registerForm.controls.codigo.value
+        userName: this.registerForm.controls.userName.value,
+        email: this.registerForm.controls.email.value,
+        password: this.registerForm.controls.password.value,
+        address: this.registerForm.controls.address.value,
+        homeId : this.registerForm.controls.homeId.value
       };
 
-      return true;
+      return "allclear";
     }
   }
 
@@ -93,12 +98,12 @@ export class RegisterPage {
     toast.present();
   }
   confirmResponse(data) {
-    console.log("server response:" + data);
-    if (data[1] == "ok") {
-      this.useToast("¡Registro creado correctamente!", 5000);
+    if (data.id) {
+      this.useToast("Register was successfull", 5000);
+      localStorage.setItem("UserId",data);
       return true;
     } else {
-      this.useToast(data[0], 5000);
+      this.useToast(data.err, 5000);
       return false;
     }
   }

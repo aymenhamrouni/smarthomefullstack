@@ -1,14 +1,14 @@
 webpackJsonp([6],{
 
-/***/ 101:
+/***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VisitService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environment__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environment__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__error__ = __webpack_require__(275);
 var __extends = (this && this.__extends) || (function () {
@@ -61,7 +61,7 @@ VisitService = __decorate([
 
 /***/ }),
 
-/***/ 117:
+/***/ 118:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75,7 +75,7 @@ var environment = {
 
 /***/ }),
 
-/***/ 121:
+/***/ 122:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -121,79 +121,14 @@ SettingsPage = __decorate([
 
 /***/ }),
 
-/***/ 170:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environment__ = __webpack_require__(117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(118);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__error__ = __webpack_require__(275);
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var LoginService = (function (_super) {
-    __extends(LoginService, _super);
-    function LoginService(_http) {
-        var _this = _super.call(this) || this;
-        _this._http = _http;
-        _this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': '*', 'Access-Control-Allow-Headers': '*' });
-        _this.options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: _this.headers });
-        return _this;
-    }
-    LoginService.prototype.ValidateUser = function (IUser) {
-        console.log(IUser);
-        return this._http.post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/auth', IUser).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
-    };
-    LoginService.prototype.RegisterUser = function (IUser) {
-        return this._http.post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/users/createuser', IUser, this.options).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
-    };
-    LoginService.prototype.RecoverPassword = function (email) {
-        return this._http.get(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/users/recoverpassword/' + email, this.options).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response; }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
-    };
-    return LoginService;
-}(__WEBPACK_IMPORTED_MODULE_4__error__["a" /* ErrorService */]));
-LoginService = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Injectable"])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]])
-], LoginService);
-
-//# sourceMappingURL=login.js.map
-
-/***/ }),
-
 /***/ 171:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VisitsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__codigo_qr_codigo_qr__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__codigo_qr_codigo_qr__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_global__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_visit__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_visit__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(21);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -303,9 +238,9 @@ VisitsPage = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccesoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_global__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_visit__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__codigo_qr_codigo_qr__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings_settings__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_visit__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__codigo_qr_codigo_qr__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__settings_settings__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(22);
@@ -507,7 +442,7 @@ AccesoPage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_highcharts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_highcharts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_highcharts_highcharts_more__ = __webpack_require__(701);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_highcharts_highcharts_more___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_highcharts_highcharts_more__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng_socket_io__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng_socket_io__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng_socket_io___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ng_socket_io__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -871,7 +806,7 @@ webpackEmptyAsyncContext.id = 185;
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ErrorService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environment__ = __webpack_require__(117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__environment__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(417);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs__);
 
@@ -942,7 +877,7 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__login_login__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(21);
@@ -970,8 +905,8 @@ var RegisterPage = (function () {
         this.user = {};
         this.registerForm = {};
         this.registerForm = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormGroup */]({
-            codigo: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
-            name: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
+            homeId: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
+            userName: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
             address: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required),
             email: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]("", __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].compose([
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["g" /* Validators */].required,
@@ -987,7 +922,7 @@ var RegisterPage = (function () {
     // register and go to home page
     RegisterPage.prototype.register = function () {
         var _this = this;
-        if (this.ValidateUser()) {
+        if (this.ValidateUser() === "allclear") {
             this._service.RegisterUser(this.user).subscribe(function (d) {
                 _this.r = _this.confirmResponse(d);
                 if (_this.r) {
@@ -996,22 +931,30 @@ var RegisterPage = (function () {
             });
         }
         else {
-            this.useToast("Favor de validar y capturar todos los campos requeridos", 5000);
+            console.log("aaa");
+            this.useToast(this.ValidateUser(), 5000);
         }
     };
     RegisterPage.prototype.ValidateUser = function () {
-        console.log(this.registerForm.invalid);
-        if (this.registerForm.invalid)
-            return false;
+        if (this.registerForm.controls.homeId.invalid)
+            return "Home Code is Invalid!";
+        else if (this.registerForm.controls.address.invalid)
+            return "Address is Invalid!";
+        else if (this.registerForm.controls.userName.invalid)
+            return "Username is Invalid!";
+        else if (this.registerForm.controls.email.invalid)
+            return "Email is Invalid!";
+        else if (this.registerForm.controls.password.invalid)
+            return "Password is Invalid!";
         else {
             this.user = {
-                Name: this.registerForm.controls.name.value,
-                Email: this.registerForm.controls.email.value,
-                Password: this.registerForm.controls.password.value,
-                Address: this.registerForm.controls.address.value,
-                ActivationKey: this.registerForm.controls.codigo.value
+                userName: this.registerForm.controls.userName.value,
+                email: this.registerForm.controls.email.value,
+                password: this.registerForm.controls.password.value,
+                address: this.registerForm.controls.address.value,
+                homeId: this.registerForm.controls.homeId.value
             };
-            return true;
+            return "allclear";
         }
     };
     RegisterPage.prototype.login = function () {
@@ -1029,13 +972,13 @@ var RegisterPage = (function () {
         toast.present();
     };
     RegisterPage.prototype.confirmResponse = function (data) {
-        console.log("server response:" + data);
-        if (data[1] == "ok") {
-            this.useToast("¡Registro creado correctamente!", 5000);
+        if (data.id) {
+            this.useToast("Register was successfull", 5000);
+            localStorage.setItem("UserId", data);
             return true;
         }
         else {
-            this.useToast(data[0], 5000);
+            this.useToast(data.err, 5000);
             return false;
         }
     };
@@ -1043,12 +986,14 @@ var RegisterPage = (function () {
 }());
 RegisterPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
-        selector: "page-register",template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\register\register.html"*/'<!-- -->\n<ion-content class="auth-page">\n  <div class="login-content">\n\n    <!-- Logo -->\n    <div text-center class="animated fadeInDown">\n        <div class="logo-chico"></div>\n        <h4 ion-text class="text-primary">\n          <strong>Register Your Home</strong>\n        </h4>\n      </div>\n\n    <!-- Login form -->\n    <div class="list-form" [formGroup]="registerForm">\n\n        <ion-item>\n            <ion-label floating>\n              <ion-icon name="code" item-start class="text-primary"></ion-icon>\n              Home Code*\n              </ion-label>\n            <ion-input type="text" formControlName="codigo"></ion-input>\n        </ion-item>\n\n      <ion-item>\n          <ion-label floating>\n            <ion-icon name="home" item-start class="text-primary"></ion-icon>\n            Street Address*\n            </ion-label>\n          <ion-input type="text" formControlName="address"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="person" item-start class="text-primary"></ion-icon>\n          Full Name*\n        </ion-label>\n        <ion-input type="text" formControlName="name"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="mail" item-start class="text-primary"></ion-icon>\n          Email*\n        </ion-label>\n        <ion-input type="email" formControlName="email" class="form-control"></ion-input>\n      </ion-item>\n      <!--<div class="validation-errors">\n          <ng-container *ngFor="let validation of validation_messages.email" >\n            <div class="error-message" *ngIf="validations_form.get(\'email\').hasError(validation.type) && (validations_form.get(\'email\').dirty || validations_form.get(\'email\').touched)">\n          {{ validation.message }}\n            </div>\n          </ng-container>\n        </div>-->\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n          Password (Min 5 Character)\n        </ion-label>\n        <ion-input type="password" formControlName="password"></ion-input>\n      </ion-item>\n\n    </div>\n\n    <div margin-top>\n      <button ion-button block color="dark" tappable (click)="register()">\n        SIGN UP\n      </button>\n\n    </div>\n\n    <!-- Other links -->\n    <div text-center margin-top padding-bottom>\n      <span ion-text color="primary" tappable (click)="login()">You already have an account ?</span>\n    </div>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\register\register.html"*/
+        selector: "page-register",template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\register\register.html"*/'<!-- -->\n<ion-content class="auth-page">\n  <div class="login-content">\n\n    <!-- Logo -->\n    <div text-center class="animated fadeInDown">\n        <div class="logo-chico"></div>\n        <h4 ion-text class="text-primary">\n          <strong>Register Your Home</strong>\n        </h4>\n      </div>\n\n    <!-- Login form -->\n    <div class="list-form" [formGroup]="registerForm">\n\n        <ion-item>\n            <ion-label floating>\n              <ion-icon name="code" item-start class="text-primary"></ion-icon>\n              Home Code*\n              </ion-label>\n            <ion-input type="text" formControlName="homeId"></ion-input>\n        </ion-item>\n\n      <ion-item>\n          <ion-label floating>\n            <ion-icon name="home" item-start class="text-primary"></ion-icon>\n            Street Address*\n            </ion-label>\n          <ion-input type="text" formControlName="address"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="person" item-start class="text-primary"></ion-icon>\n          Username*\n        </ion-label>\n        <ion-input type="text" formControlName="userName"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="mail" item-start class="text-primary"></ion-icon>\n          Email*\n        </ion-label>\n        <ion-input type="email" formControlName="email" class="form-control"></ion-input>\n      </ion-item>\n      <!--<div class="validation-errors">\n          <ng-container *ngFor="let validation of validation_messages.email" >\n            <div class="error-message" *ngIf="validations_form.get(\'email\').hasError(validation.type) && (validations_form.get(\'email\').dirty || validations_form.get(\'email\').touched)">\n          {{ validation.message }}\n            </div>\n          </ng-container>\n        </div>-->\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n          Password (Min 5 Character)\n        </ion-label>\n        <ion-input type="password" formControlName="password"></ion-input>\n      </ion-item>\n\n    </div>\n\n    <div margin-top>\n      <button ion-button block color="dark" tappable (click)="register()">\n        SIGN UP\n      </button>\n\n    </div>\n\n    <!-- Other links -->\n    <div text-center margin-top padding-bottom>\n      <span ion-text color="primary" tappable (click)="login()">You already have an account ?</span>\n    </div>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\register\register.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */],
+        __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */]])
 ], RegisterPage);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=register.js.map
 
 /***/ }),
@@ -1236,9 +1181,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__pages_visits_visits__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_global__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_visit__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_codigo_qr_codigo_qr__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_login__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_visit__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_codigo_qr_codigo_qr__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_login__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ionic_angular__ = __webpack_require__(21);
@@ -1250,20 +1195,20 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_keyboard__ = __webpack_require__(389);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__services_weather__ = __webpack_require__(390);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__app_component__ = __webpack_require__(744);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_settings_settings__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_settings_settings__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_home_home__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_login_login__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_notifications_notifications__ = __webpack_require__(384);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_register_register__ = __webpack_require__(383);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_local_weather_local_weather__ = __webpack_require__(391);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_acceso_acceso__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_http__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_http__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24_angularx_qrcode__ = __webpack_require__(745);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_social_sharing__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_screenshot__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_streamfeed_streamfeed__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_firesensors_firesensors__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_ng_socket_io__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_ng_socket_io__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29_ng_socket_io___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_29_ng_socket_io__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1425,11 +1370,12 @@ GlobalService = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__notifications_notifications__ = __webpack_require__(384);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__settings_settings__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__settings_settings__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__streamfeed_streamfeed__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__firesensors_firesensors__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng_socket_io__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng_socket_io__ = __webpack_require__(145);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng_socket_io___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_ng_socket_io__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__services_login__ = __webpack_require__(95);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1448,9 +1394,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomePage = (function () {
-    function HomePage(socket, nav, popoverCtrl, _global) {
+    function HomePage(_service, socket, nav, popoverCtrl, _global) {
         var _this = this;
+        this._service = _service;
         this.socket = socket;
         this.nav = nav;
         this.popoverCtrl = popoverCtrl;
@@ -1463,6 +1411,7 @@ var HomePage = (function () {
         this.Temp = 0;
         this.username = this._global.UserName;
         this.location = this._global.UserLocation;
+        this.isToggled = false;
         this.socket.connect();
         this.socket.on("home_1", function (msg) {
             _this.Home.WindowsSensors = JSON.parse(msg.payload).WindowsSensors;
@@ -1493,13 +1442,17 @@ var HomePage = (function () {
     HomePage.prototype.acceso = function () {
         this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_1__acceso_acceso__["a" /* AccesoPage */]);
     };
+    HomePage.prototype.notify = function () {
+        this._service.PostDoor({ WindowsSensors: Number(this.isToggled).toString() }, JSON.parse(localStorage.getItem("userData")).accessToken).subscribe(function (d) {
+        });
+    };
     return HomePage;
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
         selector: 'page-home',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\home\home.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="secondary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <p>Smart Home Security</p>\n    </ion-title>\n<!--     <ion-buttons end>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <button ion-button full tappable (click)="acceso()">\n    <ion-icon name="key"></ion-icon>\n    <div style="padding-left: 100px">Conceder Acceso</div>\n  </button>\n\n\n\n  \n    <div cards>\n\n        <div class="grid-full">\n          <ion-row>\n            <ion-col>\n             \n                \n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/cameras.png"/>\n              \n                \n      <div  class="image" >Surveillance Cameras</div>\n              \n            </ion-col>\n    \n            <ion-col>\n                <img  class="image" (click)="goToFireSensor()" src="../../assets/img/fire.png"/>\n                <div  class="image" >Fire Sensors Stats</div>\n                 </ion-col> \n    \n            <ion-col>\n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/doors.png"/>\n                <div  class="image" >Doors Sensors Stats</div>\n            </ion-col>\n    \n            <ion-col>\n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/windows.png"/>\n                <div  class="image" >Winsows Sensors Stats</div>\n            </ion-col>\n          </ion-row>\n        </div>\n    \n      </div>\n      <ion-list>\n\n        <ion-item>\n          <ion-label>Doors Sensor Status</ion-label>\n          <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n        </ion-item>\n      \n      </ion-list>\n\n\n\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\home\home.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_8_ng_socket_io__["Socket"], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9__services_login__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_8_ng_socket_io__["Socket"], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
@@ -1575,7 +1528,7 @@ var MyApp = (function () {
         this.nav.setRoot(page.component);
     };
     MyApp.prototype.logout = function () {
-        localStorage.clear();
+        localStorage.removeItem("userData");
         this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_7__pages_login_login__["a" /* LoginPage */]);
     };
     MyApp.prototype.cambiarContrasena = function () { };
@@ -1589,15 +1542,17 @@ var MyApp = (function () {
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */]) === "function" && _a || Object)
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* Nav */])
 ], MyApp.prototype, "nav", void 0);
 MyApp = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\app\app.html"*/'<ion-menu side="left" id="authenticated" [content]="content">\n  <ion-header>\n    <ion-toolbar class="user-profile">\n\n      <ion-grid>\n        <ion-row>\n          <ion-col col-4>\n              <div class="user-avatar">\n                <img src="assets/img/logo-inicio.png" alt="logo-inicio">\n              </div>\n          </ion-col>\n          <ion-col padding-top col-8>\n            <h2 ion-text class="no-margin bold text-white">\n              Smart Home Security\n            </h2>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n\n    </ion-toolbar>\n  </ion-header>\n\n  <ion-content class="common-bg-2">\n\n    <ion-grid>\n        <ion-row no-padding class="other-data">\n            <ion-col no-padding class="column">\n              <button ion-button icon-left small full color="light" menuClose (click)="menuPrincipal()">\n                <ion-icon name="home"></ion-icon>\n                Menu Principal\n              </button>\n            </ion-col>\n        </ion-row>\n\n        <ion-row no-padding class="other-data">\n          <ion-col no-padding class="column">\n            <button ion-button icon-left small full color="light" menuClose (click)="registroVisitas()">\n              <ion-icon name="archive"></ion-icon>\n                Registro de Visitas\n            </button>\n          </ion-col>\n      </ion-row>\n\n        <ion-row no-padding class="other-data">\n            <ion-col no-padding class="column">\n              <button ion-button icon-left small full color="light" menuClose (click)="logout()">\n                <ion-icon name="log-out"></ion-icon>\n                Cerrar Sesión\n              </button>\n            </ion-col>\n          </ion-row>\n    </ion-grid>\n\n  </ion-content>\n\n</ion-menu>\n\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\app\app.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */]) === "function" && _e || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["j" /* Platform */],
+        __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
+        __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__["a" /* SplashScreen */],
+        __WEBPACK_IMPORTED_MODULE_6__ionic_native_keyboard__["a" /* Keyboard */]])
 ], MyApp);
 
-var _a, _b, _c, _d, _e;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
@@ -1608,7 +1563,7 @@ var _a, _b, _c, _d, _e;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_global__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_login__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__register_register__ = __webpack_require__(383);
@@ -1644,11 +1599,12 @@ var LoginPage = (function () {
         this._global.UserName = null;
         this._global.UserLocation = null;
         this.menu.swipeEnable(false);
+        console.log(navParams.get("willingly"));
         if (localStorage.getItem("userData")) {
             this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_5__home_home__["a" /* HomePage */]);
         }
-        else if (!localStorage.getItem("UserExists") &&
-            !navParams.get("willingly")) {
+        else if (((!localStorage.getItem("UserId")) && (navParams.get("willingly") === "false"))) {
+            navParams.data;
             this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* RegisterPage */]);
         }
     }
@@ -1757,15 +1713,92 @@ LoginPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
         selector: "page-login",template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\login\login.html"*/'<!-- -->\n\n\n\n<ion-content padding class="animated fadeIn login auth-page">\n\n  <div class="login-content">\n\n    <!-- Logo -->\n\n    <div text-center class="animated fadeInDown">\n\n      <div class="logo"></div>\n\n      <h2 ion-text class="text-primary"><strong>Welcome!</strong></h2>\n\n    </div>\n\n\n\n    <!-- Login form -->\n\n    <form #userLoginForm="ngForm" class="list-form">\n\n      <ion-item>\n\n        <ion-label floating>\n\n          <ion-icon name="mail" item-start class="text-primary"></ion-icon>\n\n          Email\n\n        </ion-label>\n\n        <ion-input\n\n          type="email"\n\n          #Email="ngModel"\n\n          [(ngModel)]="user.email"\n\n          [ngModelOptions]="{ standalone: true }"\n\n          required\n\n        ></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label floating>\n\n          <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n\n          Password\n\n        </ion-label>\n\n        <ion-input\n\n          type="password"\n\n          #Password="ngModel"\n\n          [(ngModel)]="user.password"\n\n          [ngModelOptions]="{ standalone: true }"\n\n          required\n\n        ></ion-input>\n\n      </ion-item>\n\n    </form>\n\n\n\n    <p text-right ion-text color="primary" tappable (click)="forgotPass()">\n\n      <strong>Forget password ?</strong>\n\n    </p>\n\n\n\n    <div>\n\n      <button\n\n        ion-button\n\n        icon-start\n\n        block\n\n        color="dark"\n\n        tappable\n\n        (click)="onSubmit()"\n\n      >\n\n        <ion-icon name="log-in"></ion-icon>\n\n        LOG IN\n\n      </button>\n\n    </div>\n\n\n\n    <!-- Other links -->\n\n    <div text-center margin-top>\n\n      <span ion-text color="primary" tappable (click)="register()"\n\n        >Not a user? <strong>Register here!</strong></span\n\n      >\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\login\login.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavParams */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* MenuController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* MenuController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* ToastController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]) === "function" && _h || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["f" /* MenuController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */],
+        __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]])
 ], LoginPage);
 
-var _a, _b, _c, _d, _e, _f, _g, _h;
 //# sourceMappingURL=login.js.map
 
 /***/ }),
 
 /***/ 95:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__environment__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(119);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__error__ = __webpack_require__(275);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var LoginService = (function (_super) {
+    __extends(LoginService, _super);
+    function LoginService(_http) {
+        var _this = _super.call(this) || this;
+        _this._http = _http;
+        _this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': '*', 'Access-Control-Allow-Headers': '*' });
+        _this.options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: _this.headers });
+        return _this;
+    }
+    LoginService.prototype.ValidateUser = function (IUser) {
+        console.log(IUser);
+        return this._http.post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/auth', IUser).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
+    };
+    LoginService.prototype.RegisterUser = function (IUser) {
+        return this._http.post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/users', IUser).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
+    };
+    LoginService.prototype.PostDoor = function (IUser, token) {
+        this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'authorization': "Bearer " + token.toString() });
+        this.options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+        console.log(this.headers);
+        return this._http.post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/values', IUser, this.options).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response; }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
+    };
+    LoginService.prototype.RecoverPassword = function (email) {
+        return this._http.get(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/users/recoverpassword/' + email, this.options).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response; }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
+    };
+    return LoginService;
+}(__WEBPACK_IMPORTED_MODULE_4__error__["a" /* ErrorService */]));
+LoginService = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]])
+], LoginService);
+
+//# sourceMappingURL=login.js.map
+
+/***/ }),
+
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

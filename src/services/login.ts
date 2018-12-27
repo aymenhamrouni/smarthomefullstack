@@ -24,8 +24,19 @@ export class LoginService extends ErrorService {
   }
 
   RegisterUser(IUser): Observable<any> {
-    return this._http.post(environment.endpoint  + '/users/createuser', IUser, this.options).pipe(
+    return this._http.post(environment.endpoint  + '/users', IUser).pipe(
         map((response: Response) => response.json()),
+        catchError(this.handleError)
+    ).do(response => console.log(response));
+  }
+
+  PostDoor(IUser,token): Observable<any> {
+    this.headers = new Headers({'authorization': "Bearer "+token.toString() });
+
+    this.options = new RequestOptions({ headers: this.headers });
+    console.log(this.headers);
+    return this._http.post(environment.endpoint  + '/values', IUser ,this.options).pipe(
+        map((response: Response) => response),
         catchError(this.handleError)
     ).do(response => console.log(response));
   }
@@ -38,3 +49,8 @@ export class LoginService extends ErrorService {
   }
 
 }
+
+
+
+
+

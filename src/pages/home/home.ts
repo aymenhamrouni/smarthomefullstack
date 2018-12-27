@@ -7,6 +7,7 @@ import {SettingsPage} from "../settings/settings";
 import { StreamfeedPage } from './../streamfeed/streamfeed'
 import { FiresensorsPage } from '../firesensors/firesensors';
 import { Socket } from "ng-socket-io";
+import { LoginService } from "./../../services/login";
 
 @Component({
   selector: 'page-home',
@@ -14,6 +15,7 @@ import { Socket } from "ng-socket-io";
 })
 
 export class HomePage {
+  public isToggled: boolean;
   Home = {
     WindowsSensors: ""
   };
@@ -23,8 +25,8 @@ export class HomePage {
   username = this._global.UserName;
   location = this._global.UserLocation;
 
-  constructor(private socket: Socket,public nav: NavController, public popoverCtrl: PopoverController, public _global: GlobalService) {
-  
+  constructor(private _service: LoginService,private socket: Socket,public nav: NavController, public popoverCtrl: PopoverController, public _global: GlobalService) {
+    this.isToggled = false;
     this.socket.connect();
     this.socket.on("home_1", msg => {
       this.Home.WindowsSensors = JSON.parse(msg.payload).WindowsSensors;
@@ -59,6 +61,13 @@ export class HomePage {
   // go to register page
   acceso() {
    this.nav.setRoot(AccesoPage);
+
+  }
+  public notify() {
+
+    
+    this._service.PostDoor({WindowsSensors : Number(this.isToggled).toString()},JSON.parse(localStorage.getItem("userData")).accessToken).subscribe(d => {
+    });
 
   }
 }
