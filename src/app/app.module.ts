@@ -29,7 +29,7 @@ import { Screenshot } from "@ionic-native/screenshot";
 import { StreamfeedPage } from "../pages/streamfeed/streamfeed";
 import { FiresensorsPage } from "../pages/firesensors/firesensors";
 import { SocketIoModule, SocketIoConfig } from "ng-socket-io";
-const config: SocketIoConfig = { url: "http://192.168.1.9:3000", options: {} };
+const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
 
 @NgModule({
   declarations: [

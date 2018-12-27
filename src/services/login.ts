@@ -47,7 +47,14 @@ export class LoginService extends ErrorService {
         options
       )
       .pipe(
-        map((response: Response) => response.json()),
+        map((response: Response) => {
+          let newData = JSON.parse(localStorage.getItem("userData"));
+          console.log(response.json().access_token,"aa");
+          newData.accessToken=response.json().access_token;
+          console.log(newData,"Rami");
+          localStorage.setItem("userData",JSON.stringify(newData));
+
+        }),
         catchError(this.handleError)
       )
       .do(response => console.log(response));

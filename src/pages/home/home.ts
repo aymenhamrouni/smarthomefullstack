@@ -26,7 +26,12 @@ export class HomePage {
   location = this._global.UserLocation;
 
   constructor(private _service: LoginService,private socket: Socket,public nav: NavController, public popoverCtrl: PopoverController, public _global: GlobalService) {
-    this.isToggled = false;
+  
+    
+  }
+
+  ionViewDidLoad() {
+  this.isToggled = false;
     this.socket.connect();
     this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
       this.Home.WindowsSensors_1 = JSON.parse(msg.payload).WindowsSensors_1;
@@ -44,6 +49,20 @@ export class HomePage {
       this.Temp = JSON.parse(msg.payload).Temp;
       console.log(msg);
     });
+    var that=this;
+    setInterval(function() {
+      //console.log(JSON.parse(localStorage.getItem("userData")).refreshToken.toString());
+      //console.log(JSON.parse(localStorage.getItem("userData")).RefreshToken)
+      if(localStorage.getItem("userData")) 
+      {
+        that._service
+        .RefreshToken(
+        )
+        .subscribe(d => {}); 
+      }
+     
+    }, 7000);
+
   }
 
   // to go account page
