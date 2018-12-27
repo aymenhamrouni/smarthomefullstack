@@ -877,7 +877,7 @@ var StreamfeedPage = (function () {
 }());
 StreamfeedPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-streamfeed',template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Surveillance Cameras</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="assets/streamfeeds/door.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Door Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="../../assets/streamfeeds/livingroom.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Living Room Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="../../assets/streamfeeds/kitchen.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Kitche Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/,
+        selector: 'page-streamfeed',template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Surveillance Cameras</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="assets/streamfeeds/door.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Door Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="assets/streamfeeds/livingroom.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Living Room Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="assets/streamfeeds/kitchen.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Kitche Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
 ], StreamfeedPage);
@@ -908,11 +908,11 @@ webpackEmptyAsyncContext.id = 186;
 
 var map = {
 	"../pages/acceso/acceso.module": [
-		752,
+		751,
 		5
 	],
 	"../pages/codigo-qr/codigo-qr.module": [
-		751,
+		752,
 		4
 	],
 	"../pages/firesensors/firesensors.module": [
@@ -924,11 +924,11 @@ var map = {
 		0
 	],
 	"../pages/streamfeed/streamfeed.module": [
-		755,
+		756,
 		2
 	],
 	"../pages/visits/visits.module": [
-		756,
+		755,
 		1
 	]
 };
@@ -1419,12 +1419,12 @@ AppModule = __decorate([
                 autoFocusAssist: false
             }, {
                 links: [
-                    { loadChildren: '../pages/codigo-qr/codigo-qr.module#CodigoQrPageModule', name: 'CodigoQrPage', segment: 'codigo-qr', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/acceso/acceso.module#AccesoPageModule', name: 'AccesoPage', segment: 'acceso', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/codigo-qr/codigo-qr.module#CodigoQrPageModule', name: 'CodigoQrPage', segment: 'codigo-qr', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/firesensors/firesensors.module#FiresensorsPageModule', name: 'FiresensorsPage', segment: 'firesensors', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/streamfeed/streamfeed.module#StreamfeedPageModule', name: 'StreamfeedPage', segment: 'streamfeed', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/visits/visits.module#VisitsPageModule', name: 'VisitsPage', segment: 'visits', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/visits/visits.module#VisitsPageModule', name: 'VisitsPage', segment: 'visits', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/streamfeed/streamfeed.module#StreamfeedPageModule', name: 'StreamfeedPage', segment: 'streamfeed', priority: 'low', defaultHistory: [] }
                 ]
             }),
             __WEBPACK_IMPORTED_MODULE_11__ionic_storage__["a" /* IonicStorageModule */].forRoot({
@@ -1600,7 +1600,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
-        selector: "page-home",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Smart Home Security</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <!--   <button ion-button full tappable (click)="acceso()">\n\n    <ion-icon name="key"></ion-icon>\n\n    <div style="padding-left: 100px">Conceder Acceso</div>\n\n  </button> -->\n\n\n\n  <div cards>\n\n    <div class="grid-full">\n\n      <ion-row>\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/cameras.png"\n\n          />\n\n\n\n          <div class="image">Surveillance Cameras</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToFireSensor()"\n\n            src="../../assets/img/fire.png"\n\n          />\n\n          <div class="image">Fire Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="../../assets/img/doors.png"\n\n          />\n\n          <div class="image">Doors Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="../../assets/img/windows.png"\n\n          />\n\n          <div class="image">Winsows Sensors Stats</div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label>Doors Sensor Status</ion-label>\n\n      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/
+        selector: "page-home",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Smart Home Security</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <!--   <button ion-button full tappable (click)="acceso()">\n\n    <ion-icon name="key"></ion-icon>\n\n    <div style="padding-left: 100px">Conceder Acceso</div>\n\n  </button> -->\n\n\n\n  <div cards>\n\n    <div class="grid-full">\n\n      <ion-row>\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/cameras.png"\n\n          />\n\n\n\n          <div class="image">Surveillance Cameras</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToFireSensor()"\n\n            src="assets/img/fire.png"\n\n          />\n\n          <div class="image">Fire Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/doors.png"\n\n          />\n\n          <div class="image">Doors Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/windows.png"\n\n          />\n\n          <div class="image">Winsows Sensors Stats</div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label>Doors Sensor Status</ion-label>\n\n      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_8_ng_socket_io__["Socket"],
         __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */],
