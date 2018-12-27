@@ -1,1 +1,42 @@
-webpackJsonp([2],{672:function(a,e,t){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var _=t(0),r=t(1),n=t(39),o=t(97),c=function(){return function(){}}();c=Object(r.__decorate)([Object(_.x)({imports:[n.d.forChild(o.a)],schemas:[_.w]})],c);var i=t(361),u=t(362),d=t(363),b=t(364),f=t(365),s=t(366),v=t(367),l=t(368),k=t(369),p=t(371),g=t(19),j=t(15),y=t(205),O=t(64);t.d(e,"CodigoQrPageModuleNgFactory",function(){return h});var h=_._4(c,[],function(a){return _._19([_._20(512,_.k,_._0,[[8,[i.a,u.a,d.a,b.a,f.a,s.a,v.a,l.a,k.a,p.a]],[3,_.k],_.y]),_._20(4608,g.l,g.k,[_.v]),_._20(4608,j.v,j.v,[]),_._20(4608,j.d,j.d,[]),_._20(512,g.b,g.b,[]),_._20(512,j.t,j.t,[]),_._20(512,j.i,j.i,[]),_._20(512,j.q,j.q,[]),_._20(512,y.a,y.a,[]),_._20(512,y.b,y.b,[]),_._20(512,c,c,[]),_._20(256,O.a,o.a,[])])})}});
+webpackJsonp([2],{
+
+/***/ 755:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StreamfeedPageModule", function() { return StreamfeedPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__streamfeed__ = __webpack_require__(175);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var StreamfeedPageModule = (function () {
+    function StreamfeedPageModule() {
+    }
+    return StreamfeedPageModule;
+}());
+StreamfeedPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__streamfeed__["a" /* StreamfeedPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__streamfeed__["a" /* StreamfeedPage */]),
+        ],
+    })
+], StreamfeedPageModule);
+
+//# sourceMappingURL=streamfeed.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=2.js.map

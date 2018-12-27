@@ -59,10 +59,10 @@ export class HomePage {
     });
   }
   goToStreamFeed() {
-    this.nav.setRoot(StreamfeedPage);
+    this.nav.push(StreamfeedPage);
   }
   goToFireSensor() {
-    this.nav.setRoot(FiresensorsPage, {
+    this.nav.push(FiresensorsPage, {
       mono: this.Mono,
       duo: this.Duo,
       temp: this.Temp

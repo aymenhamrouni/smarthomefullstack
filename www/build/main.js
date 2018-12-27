@@ -172,19 +172,45 @@ var LoginService = (function (_super) {
     function LoginService(_http) {
         var _this = _super.call(this) || this;
         _this._http = _http;
-        _this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({ 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': '*', 'Access-Control-Allow-Headers': '*' });
+        _this.headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "*",
+            "Access-Control-Allow-Headers": "*"
+        });
         _this.options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: _this.headers });
         return _this;
     }
     LoginService.prototype.ValidateUser = function (IUser) {
         console.log(IUser);
-        return this._http.post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/auth', IUser).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
+        return this._http
+            .post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + "/auth", IUser)
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError))
+            .do(function (response) { return console.log(response); });
+    };
+    LoginService.prototype.RefreshToken = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({
+            authorization: "Bearer " +
+                JSON.parse(localStorage.getItem("userData")).accessToken.toString()
+        });
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({ headers: headers });
+        return this._http
+            .post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + "/auth/refresh", {
+            refresh_token: JSON.parse(localStorage.getItem("userData")).refreshToken.toString()
+        }, options)
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError))
+            .do(function (response) { return console.log(response); });
     };
     LoginService.prototype.RegisterUser = function (IUser) {
-        return this._http.post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/users/createuser', IUser, this.options).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
+        return this._http
+            .post(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + "/users/createuser", IUser, this.options)
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response.json(); }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError))
+            .do(function (response) { return console.log(response); });
     };
     LoginService.prototype.RecoverPassword = function (email) {
-        return this._http.get(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + '/users/recoverpassword/' + email, this.options).pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response; }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError)).do(function (response) { return console.log(response); });
+        return this._http
+            .get(__WEBPACK_IMPORTED_MODULE_1__environment__["a" /* environment */].endpoint + "/users/recoverpassword/" + email, this.options)
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["map"])(function (response) { return response; }), Object(__WEBPACK_IMPORTED_MODULE_0_rxjs_operators__["catchError"])(this.handleError))
+            .do(function (response) { return console.log(response); });
     };
     return LoginService;
 }(__WEBPACK_IMPORTED_MODULE_4__error__["a" /* ErrorService */]));
@@ -544,7 +570,7 @@ var FiresensorsPage = (function () {
         this.data2 = [0, 0];
         this.data = 0;
         this.i = 1;
-        this.data2 = [(new Date()).getTime(), 0];
+        this.data2 = [new Date().getTime(), 0];
         this.carbMono = navParams.get("mono");
         this.carbDuo = navParams.get("duo");
         this.temp = navParams.get("duo");
@@ -575,9 +601,9 @@ var FiresensorsPage = (function () {
             },
             title: {
                 style: {
-                    fontFamily: 'Verdana, sans-serif',
-                    color: '#000000',
-                    fontWeight: 'bold',
+                    fontFamily: "Verdana, sans-serif",
+                    color: "#000000",
+                    fontWeight: "bold",
                     fontSize: "15px"
                 },
                 text: "Carbon Monoxide Level",
@@ -687,9 +713,9 @@ var FiresensorsPage = (function () {
             },
             title: {
                 style: {
-                    fontFamily: 'Verdana, sans-serif',
-                    color: '#000000',
-                    fontWeight: 'bold',
+                    fontFamily: "Verdana, sans-serif",
+                    color: "#000000",
+                    fontWeight: "bold",
                     fontSize: "15px"
                 },
                 text: "Carbon Duoxide Level",
@@ -803,7 +829,7 @@ __decorate([
 ], FiresensorsPage.prototype, "container2", void 0);
 FiresensorsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-firesensors',template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\firesensors\firesensors.html"*/'<ion-header>\n\n    <ion-navbar color="secondary">\n\n      <button ion-button menuToggle>\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n      <ion-title>\n\n        <p>Fire/Toxication Sensors</p>\n\n      </ion-title>\n\n  <!--     <ion-buttons end>\n\n        <button ion-button tappable (click)="goToAccount()">\n\n          <ion-icon name="cog"></ion-icon>\n\n        </button>\n\n      </ion-buttons> -->\n\n    </ion-navbar>\n\n  </ion-header>\n\n  \n\n  <ion-content padding class="animated fadeIn common-bg">\n\n    <h2></h2>\n\n  \n\n    <div #container></div>\n\n    <div #container1></div>\n\n    <div #container2></div>\n\n  </ion-content>\n\n  '/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\firesensors\firesensors.html"*/,
+        selector: "page-firesensors",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\firesensors\firesensors.html"*/'<ion-header>\n\n    <ion-navbar color="secondary">\n\n      <button ion-button menuToggle>\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n      <ion-title>\n\n        <p>Fire/Toxication Sensors</p>\n\n      </ion-title>\n\n  <!--     <ion-buttons end>\n\n        <button ion-button tappable (click)="goToAccount()">\n\n          <ion-icon name="cog"></ion-icon>\n\n        </button>\n\n      </ion-buttons> -->\n\n    </ion-navbar>\n\n  </ion-header>\n\n  \n\n  <ion-content padding class="animated fadeIn common-bg">\n\n    <h2></h2>\n\n  \n\n    <div #container></div>\n\n    <div #container1></div>\n\n    <div #container2></div>\n\n  </ion-content>\n\n  '/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\firesensors\firesensors.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */],
@@ -851,7 +877,7 @@ var StreamfeedPage = (function () {
 }());
 StreamfeedPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-streamfeed',template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>\n\n      <p>Surveillance Cameras</p>\n\n    </ion-title>\n\n<!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n\n\n  <ion-card> \n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n            <source src="../../assets/streamfeeds/door.mp4" type="video/mp4">\n\n            Your browser does not support playing this Video\n\n        </video>\n\n\n\n        <div class="card-title">Door Camera</div>\n\n<div class="card-subtitle">Status : GREEN</div>\n\n</ion-card>\n\n\n\n<ion-card> \n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n            <source src="../../assets/streamfeeds/livingroom.mp4" type="video/mp4">\n\n            Your browser does not support playing this Video\n\n        </video>\n\n\n\n        <div class="card-title">Living Room Camera</div>\n\n<div class="card-subtitle">Status : GREEN</div>\n\n</ion-card>\n\n\n\n<ion-card> \n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n            <source src="../../assets/streamfeeds/kitchen.mp4" type="video/mp4">\n\n            Your browser does not support playing this Video\n\n        </video>\n\n\n\n        <div class="card-title">Kitche Camera</div>\n\n<div class="card-subtitle">Status : GREEN</div>\n\n</ion-card>\n\n\n\n\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/,
+        selector: 'page-streamfeed',template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Surveillance Cameras</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="assets/streamfeeds/door.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Door Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="../../assets/streamfeeds/livingroom.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Living Room Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="../../assets/streamfeeds/kitchen.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Kitche Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
 ], StreamfeedPage);
@@ -882,11 +908,11 @@ webpackEmptyAsyncContext.id = 186;
 
 var map = {
 	"../pages/acceso/acceso.module": [
-		751,
+		752,
 		5
 	],
 	"../pages/codigo-qr/codigo-qr.module": [
-		752,
+		751,
 		4
 	],
 	"../pages/firesensors/firesensors.module": [
@@ -1031,10 +1057,12 @@ RegisterPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
         selector: "page-register",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\register\register.html"*/'<!-- -->\n\n<ion-content class="auth-page">\n\n  <div class="login-content">\n\n\n\n    <!-- Logo -->\n\n    <div text-center class="animated fadeInDown">\n\n        <div class="logo-chico"></div>\n\n        <h4 ion-text class="text-primary">\n\n          <strong>Register Your Home</strong>\n\n        </h4>\n\n      </div>\n\n\n\n    <!-- Login form -->\n\n    <div class="list-form" [formGroup]="registerForm">\n\n\n\n        <ion-item>\n\n            <ion-label floating>\n\n              <ion-icon name="code" item-start class="text-primary"></ion-icon>\n\n              Home Code*\n\n              </ion-label>\n\n            <ion-input type="text" formControlName="codigo"></ion-input>\n\n        </ion-item>\n\n\n\n      <ion-item>\n\n          <ion-label floating>\n\n            <ion-icon name="home" item-start class="text-primary"></ion-icon>\n\n            Street Address*\n\n            </ion-label>\n\n          <ion-input type="text" formControlName="address"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label floating>\n\n          <ion-icon name="person" item-start class="text-primary"></ion-icon>\n\n          Full Name*\n\n        </ion-label>\n\n        <ion-input type="text" formControlName="name"></ion-input>\n\n      </ion-item>\n\n\n\n      <ion-item>\n\n        <ion-label floating>\n\n          <ion-icon name="mail" item-start class="text-primary"></ion-icon>\n\n          Email*\n\n        </ion-label>\n\n        <ion-input type="email" formControlName="email" class="form-control"></ion-input>\n\n      </ion-item>\n\n      <!--<div class="validation-errors">\n\n          <ng-container *ngFor="let validation of validation_messages.email" >\n\n            <div class="error-message" *ngIf="validations_form.get(\'email\').hasError(validation.type) && (validations_form.get(\'email\').dirty || validations_form.get(\'email\').touched)">\n\n          {{ validation.message }}\n\n            </div>\n\n          </ng-container>\n\n        </div>-->\n\n\n\n      <ion-item>\n\n        <ion-label floating>\n\n          <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n\n          Password (Min 5 Character)\n\n        </ion-label>\n\n        <ion-input type="password" formControlName="password"></ion-input>\n\n      </ion-item>\n\n\n\n    </div>\n\n\n\n    <div margin-top>\n\n      <button ion-button block color="dark" tappable (click)="register()">\n\n        SIGN UP\n\n      </button>\n\n\n\n    </div>\n\n\n\n    <!-- Other links -->\n\n    <div text-center margin-top padding-bottom>\n\n      <span ion-text color="primary" tappable (click)="login()">You already have an account ?</span>\n\n    </div>\n\n\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\register\register.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["a" /* AlertController */],
+        __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["l" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_1__services_login__["a" /* LoginService */]])
 ], RegisterPage);
 
-var _a, _b, _c, _d;
 //# sourceMappingURL=register.js.map
 
 /***/ }),
@@ -1357,7 +1385,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var config = { url: "http://localhost:3000", options: {} };
+var config = { url: "http://192.168.1.9:3000", options: {} };
 var AppModule = (function () {
     function AppModule() {
     }
@@ -1391,8 +1419,8 @@ AppModule = __decorate([
                 autoFocusAssist: false
             }, {
                 links: [
-                    { loadChildren: '../pages/acceso/acceso.module#AccesoPageModule', name: 'AccesoPage', segment: 'acceso', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/codigo-qr/codigo-qr.module#CodigoQrPageModule', name: 'CodigoQrPage', segment: 'codigo-qr', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/acceso/acceso.module#AccesoPageModule', name: 'AccesoPage', segment: 'acceso', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/firesensors/firesensors.module#FiresensorsPageModule', name: 'FiresensorsPage', segment: 'firesensors', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/streamfeed/streamfeed.module#StreamfeedPageModule', name: 'StreamfeedPage', segment: 'streamfeed', priority: 'low', defaultHistory: [] },
@@ -1550,10 +1578,10 @@ var HomePage = (function () {
         });
     };
     HomePage.prototype.goToStreamFeed = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_6__streamfeed_streamfeed__["a" /* StreamfeedPage */]);
+        this.nav.push(__WEBPACK_IMPORTED_MODULE_6__streamfeed_streamfeed__["a" /* StreamfeedPage */]);
     };
     HomePage.prototype.goToFireSensor = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_7__firesensors_firesensors__["a" /* FiresensorsPage */], {
+        this.nav.push(__WEBPACK_IMPORTED_MODULE_7__firesensors_firesensors__["a" /* FiresensorsPage */], {
             mono: this.Mono,
             duo: this.Duo,
             temp: this.Temp
@@ -1572,7 +1600,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
-        selector: "page-home",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Smart Home Security</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <!--   <button ion-button full tappable (click)="acceso()">\n\n    <ion-icon name="key"></ion-icon>\n\n    <div style="padding-left: 100px">Conceder Acceso</div>\n\n  </button> -->\n\n\n\n  <div cards>\n\n    <div class="grid-full">\n\n      <ion-row>\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="../../assets/img/cameras.png"\n\n          />\n\n\n\n          <div class="image">Surveillance Cameras</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToFireSensor()"\n\n            src="../../assets/img/fire.png"\n\n          />\n\n          <div class="image">Fire Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="../../assets/img/doors.png"\n\n          />\n\n          <div class="image">Doors Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="../../assets/img/windows.png"\n\n          />\n\n          <div class="image">Winsows Sensors Stats</div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label>Doors Sensor Status</ion-label>\n\n      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/
+        selector: "page-home",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Smart Home Security</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <!--   <button ion-button full tappable (click)="acceso()">\n\n    <ion-icon name="key"></ion-icon>\n\n    <div style="padding-left: 100px">Conceder Acceso</div>\n\n  </button> -->\n\n\n\n  <div cards>\n\n    <div class="grid-full">\n\n      <ion-row>\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/cameras.png"\n\n          />\n\n\n\n          <div class="image">Surveillance Cameras</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToFireSensor()"\n\n            src="../../assets/img/fire.png"\n\n          />\n\n          <div class="image">Fire Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="../../assets/img/doors.png"\n\n          />\n\n          <div class="image">Doors Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="../../assets/img/windows.png"\n\n          />\n\n          <div class="image">Winsows Sensors Stats</div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label>Doors Sensor Status</ion-label>\n\n      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_8_ng_socket_io__["Socket"],
         __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */],
@@ -1696,7 +1724,7 @@ MyApp = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: false,
-    endpoint: "http://localhost:3000"
+    endpoint: "http://192.168.1.9:3000"
 };
 //# sourceMappingURL=environment.js.map
 
@@ -1751,6 +1779,10 @@ var LoginPage = (function () {
             !navParams.get("willingly")) {
             this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_4__register_register__["a" /* RegisterPage */]);
         }
+        var that = this;
+        setInterval(function () {
+            that._service.RefreshToken().subscribe();
+        }, 900000);
     }
     LoginPage.prototype.loadingCreate = function () {
         this.loader = this.loading.create({

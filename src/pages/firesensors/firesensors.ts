@@ -13,17 +13,17 @@ import { Socket } from "ng-socket-io";
 More(Highcharts);
 @IonicPage()
 @Component({
-  selector: 'page-firesensors',
-  templateUrl: 'firesensors.html',
+  selector: "page-firesensors",
+  templateUrl: "firesensors.html"
 })
 export class FiresensorsPage {
-   a : any ;
+  a: any;
   carbMono: number;
-  temp : number; 
-  acc :[number,number];
-  data2 : [number,number] = [0,0] ;
+  temp: number;
+  acc: [number, number];
+  data2: [number, number] = [0, 0];
   data: any = 0;
-  i : number =1 ;
+  i: number = 1;
   carbDuo: number;
   @ViewChild("container", { read: ElementRef }) container: ElementRef;
   @ViewChild("container1", { read: ElementRef }) container1: ElementRef;
@@ -35,12 +35,12 @@ export class FiresensorsPage {
     public socket: Socket,
     public navParams: NavParams
   ) {
-    this.data2=[(new Date()).getTime(),0]
+    this.data2 = [new Date().getTime(), 0];
     this.carbMono = navParams.get("mono");
     this.carbDuo = navParams.get("duo");
-    this.temp = navParams.get("duo")
+    this.temp = navParams.get("duo");
     this.socket.connect();
-   
+
     if (this.carbMono == 0) {
       let loading = this.loadingCtrl.create({
         spinner: "ios",
@@ -53,21 +53,18 @@ export class FiresensorsPage {
       }, 5000);
     }
 
-    
     //this.carbMono = 0;
     //this.carbDuo = 0;
   }
 
   ionViewDidLoad() {
-
     Highcharts.chart(
-
       this.container.nativeElement,
       {
         chart: {
           type: "gauge",
           height: "80%",
-          backgroundColor : null,
+          backgroundColor: null,
           plotBackgroundColor: null,
           plotBackgroundImage: null,
           plotBorderWidth: 0,
@@ -75,12 +72,12 @@ export class FiresensorsPage {
         },
 
         title: {
-          style: { 
-            fontFamily: 'Verdana, sans-serif',
-            color: '#000000',
-            fontWeight: 'bold',
+          style: {
+            fontFamily: "Verdana, sans-serif",
+            color: "#000000",
+            fontWeight: "bold",
             fontSize: "15px"
-           },
+          },
           text: "Carbon Monoxide Level",
           y: 30
         },
@@ -185,14 +182,14 @@ export class FiresensorsPage {
         }, 3000);
       }
     );
-   
+
     Highcharts.chart(
       this.container1.nativeElement,
       {
         chart: {
           type: "gauge",
           height: "80%",
-          backgroundColor : null,
+          backgroundColor: null,
           plotBackgroundColor: null,
           plotBackgroundImage: null,
           plotBorderWidth: 0,
@@ -200,11 +197,12 @@ export class FiresensorsPage {
         },
 
         title: {
-          style: { 
-            fontFamily: 'Verdana, sans-serif',
-            color: '#000000',
-            fontWeight: 'bold',
-            fontSize: "15px" },
+          style: {
+            fontFamily: "Verdana, sans-serif",
+            color: "#000000",
+            fontWeight: "bold",
+            fontSize: "15px"
+          },
           text: "Carbon Duoxide Level",
           y: 30
         },
@@ -300,7 +298,7 @@ export class FiresensorsPage {
         setInterval(function() {
           var point = chart.series[0].points[0],
             newVal;
-                  this.socket.on("home_1", msg => {
+          this.socket.on("home_1", msg => {
             this.carbDuo = JSON.parse(msg.payload).CarbonDioxide;
           });
 
@@ -309,9 +307,5 @@ export class FiresensorsPage {
         }, 3000);
       }
     );
-
-
-    
   }
-
 }
