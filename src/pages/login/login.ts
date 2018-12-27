@@ -39,12 +39,13 @@ export class LoginPage {
     this._global.UserLocation = null;
     this.menu.swipeEnable(false);
     console.log(navParams.get("willingly"));
+    console.log(!localStorage.getItem("UserId"));
     if (localStorage.getItem("userData")) {
       this.nav.setRoot(HomePage);
     } else if (
-      ((!localStorage.getItem("UserId")) && (navParams.get("willingly")==="false"))
+      (!localStorage.getItem("UserId") && (!navParams.get("willingly")))
     ) {
-      navParams.data
+      
       this.nav.setRoot(RegisterPage);
     }
     var that = this;
