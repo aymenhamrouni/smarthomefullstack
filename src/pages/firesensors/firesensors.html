@@ -1,24 +1,21 @@
 <ion-header>
-    <ion-navbar color="secondary">
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>
-        <p>Fire/Toxication Sensors</p>
-      </ion-title>
-  <!--     <ion-buttons end>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title> <p>Fire/Toxication Sensors</p> </ion-title>
+    <!--     <ion-buttons end>
         <button ion-button tappable (click)="goToAccount()">
           <ion-icon name="cog"></ion-icon>
         </button>
       </ion-buttons> -->
-    </ion-navbar>
-  </ion-header>
-  
-  <ion-content padding class="animated fadeIn common-bg">
-    <h2></h2>
-  
-    <div #container></div>
-    <div #container1></div>
-    <div #container2></div>
-  </ion-content>
-  
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2></h2>
+
+  <div #container></div>
+  <div #container1></div>
+  <div #container2></div>
+  <img src="assets/img/Temperature.png" />
+  <h1>Temprature = {{ temp }}</h1>
+</ion-content>

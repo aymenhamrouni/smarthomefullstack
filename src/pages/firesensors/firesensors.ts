@@ -38,9 +38,11 @@ export class FiresensorsPage {
     this.data2 = [new Date().getTime(), 0];
     this.carbMono = navParams.get("mono");
     this.carbDuo = navParams.get("duo");
-    this.temp = navParams.get("duo");
+    this.temp = navParams.get("temp");
     this.socket.connect();
-
+    this.socket.on("home_1", msg => {
+      this.temp = JSON.parse(msg.payload).Temp;
+    });
     if (this.carbMono == 0) {
       let loading = this.loadingCtrl.create({
         spinner: "ios",
@@ -179,7 +181,7 @@ export class FiresensorsPage {
           newVal = this.carbMono;
           this.data = newVal;
           point.update(newVal);
-        }, 3000);
+        }, 2500);
       }
     );
 
@@ -304,7 +306,7 @@ export class FiresensorsPage {
 
           newVal = this.carbDuo;
           point.update(newVal);
-        }, 3000);
+        }, 2500);
       }
     );
   }

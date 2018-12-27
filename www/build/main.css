@@ -25166,7 +25166,7 @@ page-home .image,
   text-align: center;
   color: black;
   font-size: 16px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   border: 2px solid #fff;
 }
 
@@ -25199,7 +25199,7 @@ page-home .card-background-page .card-title2,
 
 page-home .card-background-page .card-subtitle,
 .home .card-background-page .card-subtitle {
-  font-size: 1.0em;
+  font-size: 1em;
   position: absolute;
   top: 90%;
   width: 100%;
@@ -25262,4 +25262,17 @@ page-account .card,
   margin-top: 1rem;
   margin-bottom: 2rem;
   overflow: hidden;
+}
+
+page-streamfeed .card-title {
+  color: black;
+  font-family: cursive;
+  margin-left: 5px;
+}
+
+page-streamfeed .card-subtitle {
+  color: black;
+  font-family: cursive;
+  margin-left: 5px;
+  padding-bottom: 3px;
 }

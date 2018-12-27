@@ -472,6 +472,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 __WEBPACK_IMPORTED_MODULE_3_highcharts_highcharts_more___default()(__WEBPACK_IMPORTED_MODULE_2_highcharts___default.a);
 var FiresensorsPage = (function () {
     function FiresensorsPage(navCtrl, loadingCtrl, socket, navParams) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.loadingCtrl = loadingCtrl;
         this.socket = socket;
@@ -482,8 +483,11 @@ var FiresensorsPage = (function () {
         this.data2 = [new Date().getTime(), 0];
         this.carbMono = navParams.get("mono");
         this.carbDuo = navParams.get("duo");
-        this.temp = navParams.get("duo");
+        this.temp = navParams.get("temp");
         this.socket.connect();
+        this.socket.on("home_1", function (msg) {
+            _this.temp = JSON.parse(msg.payload).Temp;
+        });
         if (this.carbMono == 0) {
             var loading_1 = this.loadingCtrl.create({
                 spinner: "ios",
@@ -608,7 +612,7 @@ var FiresensorsPage = (function () {
                 newVal = this.carbMono;
                 this.data = newVal;
                 point.update(newVal);
-            }, 3000);
+            }, 2500);
         });
         __WEBPACK_IMPORTED_MODULE_2_highcharts___default.a.chart(this.container1.nativeElement, {
             chart: {
@@ -719,33 +723,35 @@ var FiresensorsPage = (function () {
                 });
                 newVal = this.carbDuo;
                 point.update(newVal);
-            }, 3000);
+            }, 2500);
         });
     };
     return FiresensorsPage;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("container", { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] }),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
 ], FiresensorsPage.prototype, "container", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("container1", { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] }),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _b || Object)
 ], FiresensorsPage.prototype, "container1", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])("container2", { read: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] }),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _c || Object)
 ], FiresensorsPage.prototype, "container2", void 0);
 FiresensorsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+<<<<<<< HEAD
         selector: 'page-firesensors',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\firesensors\firesensors.html"*/'<ion-header>\n    <ion-navbar color="secondary">\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>\n        <p>Fire/Toxication Sensors</p>\n      </ion-title>\n  <!--     <ion-buttons end>\n        <button ion-button tappable (click)="goToAccount()">\n          <ion-icon name="cog"></ion-icon>\n        </button>\n      </ion-buttons> -->\n    </ion-navbar>\n  </ion-header>\n  \n  <ion-content padding class="animated fadeIn common-bg">\n    <h2></h2>\n  \n    <div #container></div>\n    <div #container1></div>\n    <div #container2></div>\n  </ion-content>\n  '/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\firesensors\firesensors.html"*/,
+=======
+        selector: "page-firesensors",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\firesensors\firesensors.html"*/'<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Fire/Toxication Sensors</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n        <button ion-button tappable (click)="goToAccount()">\n\n          <ion-icon name="cog"></ion-icon>\n\n        </button>\n\n      </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <h2></h2>\n\n\n\n  <div #container></div>\n\n  <div #container1></div>\n\n  <div #container2></div>\n\n  <img src="assets/img/Temperature.png" />\n\n  <h1>Temprature = {{ temp }}</h1>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\firesensors\firesensors.html"*/
+>>>>>>> 20e15ba0ca80d77103d3c9449727d60e2b2375da
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_4_ng_socket_io__["Socket"],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4_ng_socket_io__["Socket"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_ng_socket_io__["Socket"]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]) === "function" && _g || Object])
 ], FiresensorsPage);
 
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=firesensors.js.map
 
 /***/ }),
@@ -786,7 +792,11 @@ var StreamfeedPage = (function () {
 }());
 StreamfeedPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+<<<<<<< HEAD
         selector: 'page-streamfeed',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\streamfeed\streamfeed.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="secondary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <p>Surveillance Cameras</p>\n    </ion-title>\n<!--     <ion-buttons end>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <ion-card> \n    <video style="width: 100%; height: 100%" loop autoplay>\n            <source src="../../assets/streamfeeds/door.mp4" type="video/mp4">\n            Your browser does not support playing this Video\n        </video>\n\n        <div class="card-title">Door Camera</div>\n<div class="card-subtitle">Status : GREEN</div>\n</ion-card>\n\n<ion-card> \n    <video style="width: 100%; height: 100%" loop autoplay>\n            <source src="../../assets/streamfeeds/livingroom.mp4" type="video/mp4">\n            Your browser does not support playing this Video\n        </video>\n\n        <div class="card-title">Living Room Camera</div>\n<div class="card-subtitle">Status : GREEN</div>\n</ion-card>\n\n<ion-card> \n    <video style="width: 100%; height: 100%" loop autoplay>\n            <source src="../../assets/streamfeeds/kitchen.mp4" type="video/mp4">\n            Your browser does not support playing this Video\n        </video>\n\n        <div class="card-title">Kitche Camera</div>\n<div class="card-subtitle">Status : GREEN</div>\n</ion-card>\n\n\n\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\streamfeed\streamfeed.html"*/,
+=======
+        selector: 'page-streamfeed',template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Surveillance Cameras</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="assets/streamfeeds/door.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Door Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="assets/streamfeeds/livingroom.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Living Room Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n\n\n  <ion-card>\n\n    <video style="width: 100%; height: 100%" loop autoplay>\n\n      <source src="assets/streamfeeds/kitchen.mp4" type="video/mp4" />\n\n      Your browser does not support playing this Video\n\n    </video>\n\n\n\n    <div class="card-title">Kitche Camera</div>\n\n    <div class="card-subtitle">Status : GREEN</div>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\streamfeed\streamfeed.html"*/,
+>>>>>>> 20e15ba0ca80d77103d3c9449727d60e2b2375da
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
 ], StreamfeedPage);
@@ -842,11 +852,11 @@ var ErrorService = (function () {
 
 var map = {
 	"../pages/acceso/acceso.module": [
-		752,
+		751,
 		5
 	],
 	"../pages/codigo-qr/codigo-qr.module": [
-		751,
+		753,
 		4
 	],
 	"../pages/firesensors/firesensors.module": [
@@ -1360,10 +1370,10 @@ AppModule = __decorate([
                 autoFocusAssist: false
             }, {
                 links: [
-                    { loadChildren: '../pages/codigo-qr/codigo-qr.module#CodigoQrPageModule', name: 'CodigoQrPage', segment: 'codigo-qr', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/acceso/acceso.module#AccesoPageModule', name: 'AccesoPage', segment: 'acceso', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/codigo-qr/codigo-qr.module#CodigoQrPageModule', name: 'CodigoQrPage', segment: 'codigo-qr', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/firesensors/firesensors.module#FiresensorsPageModule', name: 'FiresensorsPage', segment: 'firesensors', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/codigo-qr/codigo-qr.module#CodigoQrPageModule', name: 'CodigoQrPage', segment: 'codigo-qr', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/streamfeed/streamfeed.module#StreamfeedPageModule', name: 'StreamfeedPage', segment: 'streamfeed', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/visits/visits.module#VisitsPageModule', name: 'VisitsPage', segment: 'visits', priority: 'low', defaultHistory: [] }
@@ -1543,7 +1553,11 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
+<<<<<<< HEAD
         selector: 'page-home',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\home\home.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="secondary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <p>Smart Home Security</p>\n    </ion-title>\n<!--     <ion-buttons end>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <button ion-button full tappable (click)="acceso()">\n    <ion-icon name="key"></ion-icon>\n    <div style="padding-left: 100px">Conceder Acceso</div>\n  </button>\n\n\n\n  \n    <div cards>\n\n        <div class="grid-full">\n          <ion-row>\n            <ion-col>\n             \n                \n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/cameras.png"/>\n              \n                \n      <div  class="image" >Surveillance Cameras</div>\n              \n            </ion-col>\n    \n            <ion-col>\n                <img  class="image" (click)="goToFireSensor()" src="../../assets/img/fire.png"/>\n                <div  class="image" >Fire Sensors Stats</div>\n                 </ion-col> \n    \n            <ion-col>\n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/doors.png"/>\n                <div  class="image" >Doors Sensors Stats</div>\n            </ion-col>\n    \n            <ion-col>\n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/windows.png"/>\n                <div  class="image" >Winsows Sensors Stats</div>\n            </ion-col>\n          </ion-row>\n        </div>\n    \n      </div>\n      <ion-list>\n\n        <ion-item>\n          <ion-label>Doors Sensor Status</ion-label>\n          <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n        </ion-item>\n      \n      </ion-list>\n\n\n\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\home\home.html"*/
+=======
+        selector: "page-home",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Smart Home Security</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <!--   <button ion-button full tappable (click)="acceso()">\n\n    <ion-icon name="key"></ion-icon>\n\n    <div style="padding-left: 100px">Conceder Acceso</div>\n\n  </button> -->\n\n\n\n  <div cards>\n\n    <div class="grid-full">\n\n      <ion-row>\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/cameras.png"\n\n          />\n\n\n\n          <div class="image">Surveillance Cameras</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToFireSensor()"\n\n            src="assets/img/fire.png"\n\n          />\n\n          <div class="image">Fire Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/doors.png"\n\n          />\n\n          <div class="image">Doors Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/windows.png"\n\n          />\n\n          <div class="image">Winsows Sensors Stats</div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label>Doors Sensor Status</ion-label>\n\n      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/
+>>>>>>> 20e15ba0ca80d77103d3c9449727d60e2b2375da
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9__services_login__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_8_ng_socket_io__["Socket"], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]])
 ], HomePage);
