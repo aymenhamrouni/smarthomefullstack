@@ -40,7 +40,7 @@ export class FiresensorsPage {
     this.carbDuo = navParams.get("duo");
     this.temp = navParams.get("temp");
     this.socket.connect();
-    this.socket.on("home_1", msg => {
+    this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
       this.temp = JSON.parse(msg.payload).Temp;
     });
     if (this.carbMono == 0) {
@@ -174,7 +174,7 @@ export class FiresensorsPage {
         setInterval(function() {
           var point = chart.series[0].points[0],
             newVal;
-          this.socket.on("home_1", msg => {
+          this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
             this.carbMono = JSON.parse(msg.payload).CarbonMonoxide;
           });
 
@@ -300,7 +300,7 @@ export class FiresensorsPage {
         setInterval(function() {
           var point = chart.series[0].points[0],
             newVal;
-          this.socket.on("home_1", msg => {
+          this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
             this.carbDuo = JSON.parse(msg.payload).CarbonDioxide;
           });
 

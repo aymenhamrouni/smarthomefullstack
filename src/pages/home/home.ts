@@ -15,8 +15,9 @@ import { LoginService } from "./../../services/login";
 })
 export class HomePage {
   public isToggled: boolean;
+  refresh : boolean=true;
   Home = {
-    WindowsSensors: ""
+    WindowsSensors_1: ""
   };
   Mono: number = 0;
   Duo: number = 0;
@@ -27,14 +28,17 @@ export class HomePage {
   constructor(private _service: LoginService,private socket: Socket,public nav: NavController, public popoverCtrl: PopoverController, public _global: GlobalService) {
     this.isToggled = false;
     this.socket.connect();
-    this.socket.on("home_1", msg => {
-      this.Home.WindowsSensors = JSON.parse(msg.payload).WindowsSensors;
+    this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
+      this.Home.WindowsSensors_1 = JSON.parse(msg.payload).WindowsSensors_1;
+      if(this.refresh) {
 
-      if (this.Home.WindowsSensors.toString() === "0") {
+      
+      if (this.Home.WindowsSensors_1.toString() === "0") {
         this.isToggled = false;
       } else {
         this.isToggled = true;
       }
+    }
       this.Mono = JSON.parse(msg.payload).CarbonMonoxide;
       this.Duo = JSON.parse(msg.payload).CarbonDioxide;
       this.Temp = JSON.parse(msg.payload).Temp;
@@ -71,10 +75,21 @@ export class HomePage {
   }
 
   public notify() {
+    this.refresh = false;
 
-    
-    this._service.PostDoor({WindowsSensors : Number(this.isToggled).toString()},JSON.parse(localStorage.getItem("userData")).accessToken).subscribe(d => {
-    });
+    let a: string =
+      JSON.parse(localStorage.getItem("userData")).homeId.toString() +
+      "_window_1";
 
+    this._service
+      .PostDoor(
+        { WindowsSensors: Number(this.isToggled).toString(), change: a },
+        JSON.parse(localStorage.getItem("userData")).accessToken
+      )
+      .subscribe(d => {});
+    var that = this;
+    setTimeout(function() {
+      that.refresh = true;
+    }, 2000);
   }
 }
