@@ -1,8 +1,0 @@
-{
-  "name": "mdc-home-security",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "ionic-angular",
-  "pro_id": "73f42743"
-}
