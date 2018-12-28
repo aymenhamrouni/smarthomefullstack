@@ -49,7 +49,7 @@ if(localStorage.getItem("userData")){
 
         that.nav.setRoot(HomePage);
       } else if (
-        (!localStorage.getItem("UserId") && (!navParams.get("willingly")))
+        (!localStorage.getItem("UserId") && (!navParams.get("willingly")) &&(!localStorage.getItem("usedApp")))
       ) {
         
         that.nav.setRoot(RegisterPage);
@@ -92,6 +92,7 @@ if(localStorage.getItem("userData")){
 
         this.loader.dismiss();
         localStorage.setItem("userData", JSON.stringify(d));
+        localStorage.setItem("userApp","true");
         this.nav.setRoot(HomePage);
       } else {
         this.loader.dismiss();
