@@ -69,11 +69,12 @@ export class LoginService extends ErrorService {
   }
 
   CheckUser(): Observable<any> {
-    var headers = new Headers({
+     var headers = new Headers({
       authorization:
         "Bearer " +
         JSON.parse(localStorage.getItem("userData")).accessToken.toString()
-    });
+        
+    }); 
     var options = new RequestOptions({ headers: headers });
 
     return this._http
@@ -83,14 +84,7 @@ export class LoginService extends ErrorService {
         options
       ).pipe(
         map((response: Response) => response.json())
-      ).catch((err : any) =>{
-       
-
-
-
-
-        return new Observable(null);
-      })
+      )
   }
 
   PostDoor(IUser,token): Observable<any> {

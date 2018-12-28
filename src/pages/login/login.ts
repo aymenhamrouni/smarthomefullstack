@@ -23,7 +23,7 @@ export class LoginPage {
   errorMsj: string;
   user: any = {};
   r: boolean;
-
+  validToken : String;
   constructor(
     public navParams: NavParams,
     public nav: NavController,
@@ -39,20 +39,27 @@ export class LoginPage {
     this._global.UserLocation = null;
     this.menu.swipeEnable(false);
     console.log(navParams.get("willingly"));
-    console.log(!localStorage.getItem("UserId"));
-    if (localStorage.getItem("userData") && !this._service.CheckUser()) {
+  
+var that = this;
+if(localStorage.getItem("userData")){
+    this._service.CheckUser().subscribe((result)=>{
+      console.log("result = ",result.ValidJWT);
+      that.validToken=result.ValidJWT;
+      if (localStorage.getItem("userData")&&(that.validToken==="True")) {
 
-      this.nav.setRoot(HomePage);
-    } else if (
-      (!localStorage.getItem("UserId") && (!navParams.get("willingly")))
-    ) {
-      
-      this.nav.setRoot(RegisterPage);
-    }
-    var that = this;
-    setInterval(function() {
-      that._service.RefreshToken().subscribe();
-    }, 900000);
+        that.nav.setRoot(HomePage);
+      } else if (
+        (!localStorage.getItem("UserId") && (!navParams.get("willingly")))
+      ) {
+        
+        that.nav.setRoot(RegisterPage);
+      }
+    });
+  };
+    /* setTimeout(function(){
+    
+  },500); */
+    
   }
   ionViewDidLoad() {
 
