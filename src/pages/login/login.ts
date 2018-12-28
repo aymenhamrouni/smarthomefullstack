@@ -40,7 +40,8 @@ export class LoginPage {
     this.menu.swipeEnable(false);
     console.log(navParams.get("willingly"));
     console.log(!localStorage.getItem("UserId"));
-    if (localStorage.getItem("userData")) {
+    if (localStorage.getItem("userData") && !this._service.CheckUser()) {
+
       this.nav.setRoot(HomePage);
     } else if (
       (!localStorage.getItem("UserId") && (!navParams.get("willingly")))
@@ -52,6 +53,10 @@ export class LoginPage {
     setInterval(function() {
       that._service.RefreshToken().subscribe();
     }, 900000);
+  }
+  ionViewDidLoad() {
+
+   
   }
 
   loadingCreate() {

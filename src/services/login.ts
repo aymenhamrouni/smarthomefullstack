@@ -68,6 +68,31 @@ export class LoginService extends ErrorService {
       .do(response => console.log(response));
   }
 
+  CheckUser(): Observable<any> {
+    var headers = new Headers({
+      authorization:
+        "Bearer " +
+        JSON.parse(localStorage.getItem("userData")).accessToken.toString()
+    });
+    var options = new RequestOptions({ headers: headers });
+
+    return this._http
+      .post(
+        environment.endpoint + "/users/check",
+        {},
+        options
+      ).pipe(
+        map((response: Response) => response.json())
+      ).catch((err : any) =>{
+       
+
+
+
+
+        return new Observable(null);
+      })
+  }
+
   PostDoor(IUser,token): Observable<any> {
     this.headers = new Headers({'authorization': "Bearer "+token.toString() });
 
