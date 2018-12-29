@@ -24,7 +24,7 @@ import { FiresensorsPage } from "../pages/firesensors/firesensors";
 import { SocketIoModule, SocketIoConfig } from "ng-socket-io";
 import { DoorsPage } from "../pages/doors/doors";
 import { WindowsPage } from "../pages/windows/windows";
-const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
+const config: SocketIoConfig = { url: "https://localhost:8443", options: {} };
 
 @NgModule({
   declarations: [

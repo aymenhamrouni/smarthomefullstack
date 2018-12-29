@@ -21,11 +21,11 @@
     <ion-item *ngFor="let item of WindowsSensors">
       <ion-label *ngIf="item[1] == 1"
         >{{ item[0].split("_")[0] }} {{ item[0].split("_")[1] }}
-        {{ item[0].split("_")[2] }} is opened</ion-label
+        {{ item[0].split("_")[2] }} is unlocked</ion-label
       >
       <ion-label *ngIf="item[1] == 0"
         >{{ item[0].split("_")[0] }} {{ item[0].split("_")[1] }}
-        {{ item[0].split("_")[2] }} is closed</ion-label
+        {{ item[0].split("_")[2] }} is locked</ion-label
       >
       <ion-toggle
         [ngModel]="!item[2]"

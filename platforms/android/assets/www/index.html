@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-  <script data-ionic="inject">
-    (function(w){var i=w.Ionic=w.Ionic||{};i.version='3.7.0';i.angular='4.4.4';i.staticDir='build/';})(window);
-  </script>
+    <script data-ionic="inject">
+      (function(w) {
+        var i = (w.Ionic = w.Ionic || {});
+        i.version = "3.7.0";
+        i.angular = "4.4.4";
+        i.staticDir = "build/";
+      })(window);
+    </script>
     <meta charset="UTF-8" />
     <title>Smart Home Security</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -40,9 +45,9 @@
 
     <!-- The bundle js is generated during the build process -->
     <script src="build/main.js"></script>
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="https://localhost:8443/socket.io/socket.io.js"></script>
     <script>
-      var socket = io.connect("http://localhost:3000");
+      var socket = io.connect("https://localhost:8443");
     </script>
   </body>
 </html>
