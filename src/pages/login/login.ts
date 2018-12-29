@@ -87,6 +87,7 @@ export class LoginPage {
 
         this.loader.dismiss();
         localStorage.setItem("userData", JSON.stringify(d));
+        localStorage.setItem("userApp", "true");
         this.nav.setRoot(HomePage);
       } else {
         this.loader.dismiss();
