@@ -68,7 +68,7 @@ VisitService = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 var environment = {
     production: false,
-    endpoint: 'http://localhost:3000'
+    endpoint: 'https://localhost:8443'
     //endpoint: 'http://localhost:50775/api'
 };
 //# sourceMappingURL=environment.js.map
@@ -1258,7 +1258,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var config = { url: "http://localhost:3000", options: {} };
+var config = { url: "https://localhost:8443", options: {} };
 var AppModule = (function () {
     function AppModule() {
     }
