@@ -18,18 +18,20 @@
   <div #container2></div>
   <div class="thermo">
     <h3 class="tempTitle">Temperature</h3>
-    <img class="temp" src="assets/img/blueTemp.png" *ngIf="10 >= temp" />
-    <img class="temp" src="assets/img/redTemp.png" *ngIf="temp > 40" />
+
+    <img class="temp" src="assets/img/blueTemp.png" [hidden]="temp >= 10" />
+
+    <img class="temp" src="assets/img/redTemp.png" [hidden]="40 > temp" />
     <img
       class="temp"
       src="assets/img/yellowTemp.png"
-      *ngIf="temp > 25 && 40 >= temp"
+      [hidden]="25 >= temp || temp >= 40"
     />
 
     <img
       class="temp"
       src="assets/img/greenTemp.png"
-      *ngIf="temp > 10 && 25 >= temp"
+      [hidden]="10 > temp || temp > 25"
       ALIGN="right"
     /><span class="tempVal">{{ temp }}°C</span>
   </div>

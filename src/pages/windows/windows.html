@@ -1,5 +1,5 @@
 <!--
-  Generated template for the WindowsPage page.
+  Generated template for the DoorsPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar color="secondary">
     <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
-    <ion-title> <p>Smart Home Security</p> </ion-title>
+    <ion-title> <p>Windows Status</p> </ion-title>
     <!--     <ion-buttons end>
         <button ion-button tappable (click)="goToAccount()">
           <ion-icon name="cog"></ion-icon>
@@ -16,4 +16,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding> </ion-content>
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of WindowsSensors">
+      <ion-label *ngIf="item[1] == 1"
+        >{{ item[0].split("_")[0] }} {{ item[0].split("_")[1] }}
+        {{ item[0].split("_")[2] }} is open</ion-label
+      >
+      <ion-label *ngIf="item[1] == 0"
+        >{{ item[0].split("_")[0] }} {{ item[0].split("_")[1] }}
+        {{ item[0].split("_")[2] }} is close</ion-label
+      >
+      <ion-toggle
+        [ngModel]="!item[2]"
+        (ionChange)="changeWindow(item[0], item[1], item[3])"
+      ></ion-toggle>
+    </ion-item>
+  </ion-list>
+</ion-content>

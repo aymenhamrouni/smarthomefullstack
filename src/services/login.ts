@@ -98,7 +98,7 @@ export class LoginService extends ErrorService {
       .pipe(map((response: Response) => response.json()));
   }
 
-  PostDoor(IUser, token): Observable<any> {
+  PostValue(IUser, token): Observable<any> {
     this.headers = new Headers({ authorization: "Bearer " + token.toString() });
     console.log(this.headers);
     this.options = new RequestOptions({ headers: this.headers });
@@ -111,20 +111,6 @@ export class LoginService extends ErrorService {
       )
       .do(response => console.log(response));
   }
-  PostAlarm(IUser, token): Observable<any> {
-    this.headers = new Headers({ authorization: "Bearer " + token.toString() });
-
-    this.options = new RequestOptions({ headers: this.headers });
-    console.log(this.headers);
-    return this._http
-      .post(environment.endpoint + "/values", IUser, this.options)
-      .pipe(
-        map((response: Response) => response),
-        catchError(this.handleError)
-      )
-      .do(response => console.log(response));
-  }
-
   RecoverPassword(email): Observable<any> {
     return this._http
       .get(

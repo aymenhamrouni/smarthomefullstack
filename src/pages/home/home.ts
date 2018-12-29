@@ -46,11 +46,25 @@ export class HomePage {
       msg => {
         that.WindowsSensors = [];
         that.DoorsSensors = [];
+        var position = 0;
+        var position2 = 0;
         for (var i in JSON.parse(msg.payload)) {
           if (i.endsWith("Window")) {
-            that.WindowsSensors.push([i, JSON.parse(msg.payload)[i]]);
+            that.WindowsSensors.push([
+              i,
+              JSON.parse(msg.payload)[i],
+              JSON.parse(msg.payload)[i] == 0,
+              position
+            ]);
+            position++;
           } else if (i.endsWith("Door")) {
-            that.DoorsSensors.push([i, JSON.parse(msg.payload)[i]]);
+            that.DoorsSensors.push([
+              i,
+              JSON.parse(msg.payload)[i],
+              JSON.parse(msg.payload)[i] == 0,
+              position2
+            ]);
+            position2++;
           }
         }
 
@@ -115,7 +129,7 @@ export class HomePage {
       JSON.parse(localStorage.getItem("userData")).homeId.toString() + "_alarm";
 
     this._service
-      .PostAlarm(
+      .PostValue(
         { NewValue: Number(this.isToggled).toString(), change: a },
         JSON.parse(localStorage.getItem("userData")).accessToken
       )
@@ -127,7 +141,7 @@ export class HomePage {
   }
   goToDoors() {
     //this.nav.push(DoorsPage, { DoorsSensors: this.DoorsSensors });
-    this.nav.push(DoorsPage);
+    this.nav.push(DoorsPage, { DoorsSensors: this.DoorsSensors });
   }
   goToWindows() {
     this.nav.push(WindowsPage, { WindowsSensors: this.WindowsSensors });

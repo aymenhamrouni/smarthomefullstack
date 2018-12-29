@@ -34,20 +34,21 @@ export class DoorsPage {
     public _service: LoginService
   ) {
     this.isToggled = true;
-    //this.DoorsSensors = navParams.get("DoorsSensors");
+    this.DoorsSensors = navParams.get("DoorsSensors");
     this.socket.connect();
     var that = this;
+
     this.socket.on(
       JSON.parse(localStorage.getItem("userData")).homeId.toString(),
       msg => {
         if (this.refresh) {
-          var DoorsSensors = [];
+          var DoorSensors = [];
           var position = 0;
         }
         for (var i in JSON.parse(msg.payload)) {
           if (i.endsWith("Door")) {
             if (this.refresh) {
-              DoorsSensors.push([
+              DoorSensors.push([
                 i,
                 JSON.parse(msg.payload)[i],
                 JSON.parse(msg.payload)[i] == 0,
@@ -57,41 +58,36 @@ export class DoorsPage {
             position++;
           }
         }
-        this.DoorsSensors = DoorsSensors;
-        console.log(this.DoorsSensors);
+        if (this.refresh) {
+          this.DoorsSensors = DoorSensors;
+        }
       }
     );
 
-    if (this.DoorsSensors.length == 0) {
-      let loading = this.loadingCtrl.create({
-        spinner: "ios",
-        content: "Please wait..."
-      });
-      loading.present();
+    let loading = this.loadingCtrl.create({
+      spinner: "ios",
+      content: "Please wait..."
+    });
+    loading.present();
 
-      setTimeout(() => {
-        loading.dismiss();
-      }, 5000);
-    }
+    setTimeout(() => {
+      loading.dismiss();
+    }, 3000);
   }
 
-  ionViewDidLoad() {
-    console.log("ionViewDidLoad DoorsPage");
-  }
+  ionViewDidLoad() {}
   changeDoor(door, value, position) {
-    console.log("aaaaaaaaaaaaaaaa", this.DoorsSensors[position]);
     this.DoorsSensors[position] = [door, !value, value == 1, position];
 
     this.refresh = false;
-    console.log("door: ", door);
-    console.log("value", event);
+
     let a: string =
       JSON.parse(localStorage.getItem("userData")).homeId.toString() +
       "_" +
       door.toString();
-    console.log("changedoor");
+
     this._service
-      .PostDoor(
+      .PostValue(
         { NewValue: Number(!value).toString(), change: a },
         JSON.parse(localStorage.getItem("userData")).accessToken
       )
