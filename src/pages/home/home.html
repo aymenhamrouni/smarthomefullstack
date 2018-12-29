@@ -16,7 +16,11 @@
     <ion-item>
       <ion-label *ngIf="isToggled">Alarm Activated</ion-label>
       <ion-label *ngIf="!isToggled">Alarm Desactivated</ion-label>
-      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>
+      <ion-toggle
+        [(ngModel)]="isToggled"
+        (ionChange)="notify()"
+        disabled="{{ alarm }}"
+      ></ion-toggle>
     </ion-item>
   </ion-list>
   <div cards>

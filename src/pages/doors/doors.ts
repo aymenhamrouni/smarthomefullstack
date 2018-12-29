@@ -9,6 +9,7 @@ import { Socket } from "ng-socket-io";
 import { ThrowStmt } from "@angular/compiler";
 import { LoginService } from "../../services/login";
 import { numberFormat } from "highcharts";
+import { ModifyService } from "../../services/modify";
 
 /**
  * Generated class for the DoorsPage page.
@@ -24,6 +25,7 @@ import { numberFormat } from "highcharts";
 })
 export class DoorsPage {
   refresh: boolean = true;
+  modify: boolean = false;
   DoorsSensors = [];
   isToggled: boolean;
   constructor(
@@ -31,8 +33,16 @@ export class DoorsPage {
     public socket: Socket,
     public loadingCtrl: LoadingController,
     public navParams: NavParams,
-    public _service: LoginService
+    public _service: LoginService,
+    public _service2: ModifyService
   ) {
+    if (
+      JSON.parse(
+        localStorage.getItem("userData")
+      ).permissionLevel.toString() === "1"
+    ) {
+      this.modify = true;
+    }
     this.isToggled = true;
     this.DoorsSensors = navParams.get("DoorsSensors");
     this.socket.connect();
@@ -72,7 +82,7 @@ export class DoorsPage {
 
     setTimeout(() => {
       loading.dismiss();
-    }, 3000);
+    }, 2000);
   }
 
   ionViewDidLoad() {}
@@ -86,7 +96,7 @@ export class DoorsPage {
       "_" +
       door.toString();
 
-    this._service
+    this._service2
       .PostValue(
         { NewValue: Number(!value).toString(), change: a },
         JSON.parse(localStorage.getItem("userData")).accessToken

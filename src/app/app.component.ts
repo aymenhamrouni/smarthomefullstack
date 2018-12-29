@@ -1,13 +1,11 @@
-import { VisitsPage } from "./../pages/visits/visits";
 import { HomePage } from "./../pages/home/home";
 import { Component, ViewChild } from "@angular/core";
-import { Platform, Nav } from "ionic-angular";
+import { Platform, Nav, ToastController } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { Keyboard } from "@ionic-native/keyboard";
 
 import { LoginPage } from "../pages/login/login";
-import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import { Socket } from "ng-socket-io";
 import { AddUserPage } from "../pages/addUser/addUser";
 
@@ -24,7 +22,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
-
+  admin: String = "0";
   appMenuItems: Array<MenuItem>;
 
   constructor(
@@ -32,7 +30,8 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public keyboard: Keyboard,
-    private socket: Socket
+    private socket: Socket,
+    public toastCtrl: ToastController
   ) {
     this.initializeApp();
 
@@ -40,7 +39,7 @@ export class MyApp {
       { title: "Home", component: HomePage, icon: "home" },
       {
         title: "Local Weather",
-        component: LocalWeatherPage,
+        component: "",
         icon: "partly-sunny"
       }
     ];
@@ -66,22 +65,40 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+
     this.nav.setRoot(page.component);
   }
 
   logout() {
-    localStorage.removeItem("userData");
     this.socket.disconnect();
+    localStorage.removeItem("userData");
+
     this.nav.setRoot(LoginPage);
   }
-
-  cambiarContrasena() {}
 
   menuPrincipal() {
     this.nav.setRoot(HomePage);
   }
 
   addUser() {
-    this.nav.push(AddUserPage);
+    this.admin = JSON.parse(
+      localStorage.getItem("userData")
+    ).permissionLevel.toString();
+    if (this.admin === "1073741824") {
+      this.nav.push(AddUserPage);
+    } else {
+      this.useToast("You should be admin to add users", 2000);
+    }
+  }
+  useToast(msg, time) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: time,
+      position: "top",
+      cssClass: "dark-trans",
+      closeButtonText: "OK",
+      showCloseButton: true
+    });
+    toast.present();
   }
 }

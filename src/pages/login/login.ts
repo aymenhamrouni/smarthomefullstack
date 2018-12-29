@@ -1,4 +1,3 @@
-import { GlobalService } from "./../../services/global";
 import { LoginService } from "./../../services/login";
 import { Component } from "@angular/core";
 import {
@@ -31,19 +30,12 @@ export class LoginPage {
     public menu: MenuController,
     public toastCtrl: ToastController,
     public loading: LoadingController,
-    public _service: LoginService,
-    public _global: GlobalService
+    public _service: LoginService
   ) {
-    this._global.UserEmail = null;
-    this._global.UserName = null;
-    this._global.UserLocation = null;
     this.menu.swipeEnable(false);
-    console.log(navParams.get("willingly"));
-
     var that = this;
     if (localStorage.getItem("userData")) {
       this._service.CheckUser().subscribe(result => {
-        console.log("result = ", result.ValidJWT);
         that.validToken = result.ValidJWT;
         if (localStorage.getItem("userData") && that.validToken === "True") {
           that.nav.setRoot(HomePage);
@@ -76,15 +68,8 @@ export class LoginPage {
 
   validateUser() {
     this._service.ValidateUser(this.user).subscribe(d => {
-      console.log("this is d");
-      console.log(d);
       this.r = this.confirmResponse(d);
       if (this.r) {
-        console.log("r value: " + this.r);
-        this._global.UserEmail = d[1];
-        this._global.UserName = d[2];
-        this._global.UserLocation = d[3];
-
         this.loader.dismiss();
         localStorage.setItem("userData", JSON.stringify(d));
         localStorage.setItem("userApp", "true");
@@ -131,14 +116,11 @@ export class LoginPage {
       buttons: [
         {
           text: "Cancelar",
-          handler: data => {
-            console.log("Cancel clicked");
-          }
+          handler: data => {}
         },
         {
           text: "Enviar",
           handler: data => {
-            console.log("Send clicked");
             this.mandarCorreo(data);
           }
         }

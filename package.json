@@ -1,7 +1,7 @@
 {
-  "name": "mdc-home-security",
+  "name": "smart-home-security",
   "version": "1.0.0",
-  "author": "Jorge Rdz <jrodriguez@lertek.com>",
+  "author": "Aymen Hamrouni & Rami Yousfi",
   "homepage": "https://lertek.com",
   "scripts": {
     "clean": "ionic-app-scripts clean",

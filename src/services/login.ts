@@ -20,14 +20,13 @@ export class LoginService extends ErrorService {
   }
 
   ValidateUser(IUser): Observable<any> {
-    console.log(IUser);
     return this._http
       .post(environment.endpoint + "/auth", IUser)
       .pipe(
         map((response: Response) => response.json()),
         catchError(this.handleError)
       )
-      .do(response => console.log(response));
+      .do(response => {});
   }
   RefreshToken(): Observable<any> {
     var headers = new Headers({
@@ -50,14 +49,12 @@ export class LoginService extends ErrorService {
       .pipe(
         map((response: Response) => {
           let newData = JSON.parse(localStorage.getItem("userData"));
-          console.log(response.json().access_token, "aa");
           newData.accessToken = response.json().access_token;
-          console.log(newData, "Rami");
           localStorage.setItem("userData", JSON.stringify(newData));
         }),
         catchError(this.handleError)
       )
-      .do(response => console.log(response));
+      .do(response => {});
   }
 
   RegisterUser(IUser): Observable<any> {
@@ -67,7 +64,7 @@ export class LoginService extends ErrorService {
         map((response: Response) => response.json()),
         catchError(this.handleError)
       )
-      .do(response => console.log(response));
+      .do(response => {});
   }
   AddUser(IUser): Observable<any> {
     var headers = new Headers({
@@ -82,7 +79,7 @@ export class LoginService extends ErrorService {
         map((response: Response) => response.json()),
         catchError(this.handleError)
       )
-      .do(response => console.log(response));
+      .do(response => {});
   }
 
   CheckUser(): Observable<any> {
@@ -98,19 +95,6 @@ export class LoginService extends ErrorService {
       .pipe(map((response: Response) => response.json()));
   }
 
-  PostValue(IUser, token): Observable<any> {
-    this.headers = new Headers({ authorization: "Bearer " + token.toString() });
-    console.log(this.headers);
-    this.options = new RequestOptions({ headers: this.headers });
-    console.log(this.headers);
-    return this._http
-      .post(environment.endpoint + "/values", IUser, this.options)
-      .pipe(
-        map((response: Response) => response),
-        catchError(this.handleError)
-      )
-      .do(response => console.log(response));
-  }
   RecoverPassword(email): Observable<any> {
     return this._http
       .get(
@@ -121,6 +105,6 @@ export class LoginService extends ErrorService {
         map((response: Response) => response),
         catchError(this.handleError)
       )
-      .do(response => console.log(response));
+      .do(response => {});
   }
 }

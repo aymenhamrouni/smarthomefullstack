@@ -1,15 +1,19 @@
-import { GlobalService } from "./../../services/global";
 import { AddUserPage } from "./../addUser/addUser";
 import { Component } from "@angular/core";
-import { NavController, PopoverController, Nav } from "ionic-angular";
-import { NotificationsPage } from "../notifications/notifications";
-import { SettingsPage } from "../settings/settings";
+import {
+  NavController,
+  PopoverController,
+  Nav,
+  ToastController
+} from "ionic-angular";
+
 import { StreamfeedPage } from "./../streamfeed/streamfeed";
 import { FiresensorsPage } from "../firesensors/firesensors";
 import { Socket } from "ng-socket-io";
 import { LoginService } from "./../../services/login";
 import { DoorsPage } from "../doors/doors";
 import { WindowsPage } from "../windows/windows";
+import { ModifyService } from "../../services/modify";
 
 @Component({
   selector: "page-home",
@@ -26,21 +30,28 @@ export class HomePage {
   Mono: number = 0;
   Duo: number = 0;
   Temp: number = 0;
-  username = this._global.UserName;
-  location = this._global.UserLocation;
-
+  Power: String;
+  alarm: boolean = false;
   constructor(
+    private _service2: ModifyService,
     private _service: LoginService,
     private socket: Socket,
     public nav: NavController,
     public popoverCtrl: PopoverController,
-    public _global: GlobalService
+    public toastCtrl: ToastController
   ) {}
 
   ionViewDidLoad() {
     this.isToggled = false;
     this.socket.connect();
+    this.Power = JSON.parse(
+      localStorage.getItem("userData")
+    ).permissionLevel.toString();
+    if (this.Power === "1") {
+      this.alarm = true;
+    }
     var that = this;
+
     this.socket.on(
       JSON.parse(localStorage.getItem("userData")).homeId.toString(),
       msg => {
@@ -68,8 +79,6 @@ export class HomePage {
           }
         }
 
-        console.log(that.WindowsSensors);
-
         this.Home.Alarm = JSON.parse(msg.payload).Alarm;
         if (this.refresh) {
           if (this.Home.Alarm.toString() === "0") {
@@ -81,13 +90,10 @@ export class HomePage {
         this.Mono = JSON.parse(msg.payload).CarbonMonoxide;
         this.Duo = JSON.parse(msg.payload).CarbonDioxide;
         this.Temp = JSON.parse(msg.payload).Temp;
-        console.log(msg);
       }
     );
     var that = this;
     setInterval(function() {
-      //console.log(JSON.parse(localStorage.getItem("userData")).refreshToken.toString());
-      //console.log(JSON.parse(localStorage.getItem("userData")).RefreshToken)
       if (localStorage.getItem("userData")) {
         that._service.RefreshToken().subscribe(d => {});
       }
@@ -95,17 +101,7 @@ export class HomePage {
   }
 
   // to go account page
-  goToAccount() {
-    this.nav.push(SettingsPage);
-  }
 
-  presentNotifications(myEvent) {
-    console.log(myEvent);
-    let popover = this.popoverCtrl.create(NotificationsPage);
-    popover.present({
-      ev: myEvent
-    });
-  }
   goToStreamFeed() {
     this.nav.push(StreamfeedPage);
   }
@@ -128,7 +124,7 @@ export class HomePage {
     let a: string =
       JSON.parse(localStorage.getItem("userData")).homeId.toString() + "_alarm";
 
-    this._service
+    this._service2
       .PostValue(
         { NewValue: Number(this.isToggled).toString(), change: a },
         JSON.parse(localStorage.getItem("userData")).accessToken
@@ -146,25 +142,15 @@ export class HomePage {
   goToWindows() {
     this.nav.push(WindowsPage, { WindowsSensors: this.WindowsSensors });
   }
+  useToast(msg, time) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: time,
+      position: "top",
+      cssClass: "dark-trans",
+      closeButtonText: "OK",
+      showCloseButton: true
+    });
+    toast.present();
+  }
 }
-
-/* public notify() {
-  this.refresh = false;
-
-  let a: string =
-    JSON.parse(localStorage.getItem("userData")).homeId.toString() +
-    "_window_1";
-
-  this._service
-    .PostDoor(
-      { WindowsSensors: Number(this.isToggled).toString(), change: a },
-      JSON.parse(localStorage.getItem("userData")).accessToken
-    )
-    .subscribe(d => {});
-  var that = this;
-  setTimeout(function() {
-    that.refresh = true;
-  }, 2000);
-}
-}
- */

@@ -1,7 +1,3 @@
-import { GlobalService } from "../../services/global";
-import { VisitService } from "../../services/visit";
-import { CodigoQrPage } from "../codigo-qr/codigo-qr";
-import { SettingsPage } from "../settings/settings";
 import { Component } from "@angular/core";
 import {
   IonicPage,
@@ -30,18 +26,13 @@ export class AddUserPage {
   addUserForm: any = {};
   permissionLevel: number;
 
-  username = this._global.UserName;
-  useremail = this._global.UserEmail;
-  location = this._global.UserLocation;
-
   constructor(
     public nav: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
     public loading: LoadingController,
-    private _service: LoginService,
-    public _global: GlobalService
+    private _service: LoginService
   ) {
     this.addUserForm = new FormGroup({
       type: new FormControl("", Validators.required),

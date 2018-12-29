@@ -1,8 +1,4 @@
-import { VisitsPage } from "./../pages/visits/visits";
-import { GlobalService } from "./../services/global";
 import { ModifyService } from "./../services/modify";
-import { VisitService } from "./../services/visit";
-import { CodigoQrPage } from "./../pages/codigo-qr/codigo-qr";
 import { LoginService } from "./../services/login";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
@@ -14,14 +10,10 @@ import { IonicStorageModule } from "@ionic/storage";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { Keyboard } from "@ionic-native/keyboard";
-import { WeatherProvider } from "../services/weather";
 import { MyApp } from "./app.component";
-import { SettingsPage } from "../pages/settings/settings";
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
-import { NotificationsPage } from "../pages/notifications/notifications";
 import { RegisterPage } from "../pages/register/register";
-import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import { AddUserPage } from "../pages/addUser/addUser";
 import { HttpModule } from "@angular/http";
 import { QRCodeModule } from "angularx-qrcode";
@@ -37,15 +29,10 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
 @NgModule({
   declarations: [
     MyApp,
-    SettingsPage,
     HomePage,
     LoginPage,
-    LocalWeatherPage,
-    NotificationsPage,
     RegisterPage,
     AddUserPage,
-    CodigoQrPage,
-    VisitsPage,
     StreamfeedPage,
     FiresensorsPage,
     DoorsPage,
@@ -72,15 +59,10 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    SettingsPage,
     HomePage,
     LoginPage,
-    LocalWeatherPage,
-    NotificationsPage,
     RegisterPage,
     AddUserPage,
-    CodigoQrPage,
-    VisitsPage,
     StreamfeedPage,
     FiresensorsPage,
     DoorsPage,
@@ -90,10 +72,7 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
     StatusBar,
     SplashScreen,
     Keyboard,
-    WeatherProvider,
     LoginService,
-    VisitService,
-    GlobalService,
     Screenshot,
     SocialSharing,
     ModifyService

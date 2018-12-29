@@ -7,6 +7,7 @@ import {
 } from "ionic-angular";
 import { Socket } from "ng-socket-io";
 import { LoginService } from "../../services/login";
+import { ModifyService } from "../../services/modify";
 
 /**
  * Generated class for the WindowsPage page.
@@ -22,6 +23,7 @@ import { LoginService } from "../../services/login";
 })
 export class WindowsPage {
   refresh: boolean = true;
+  modify: boolean = false;
   WindowsSensors = [];
   isToggled: boolean;
   constructor(
@@ -29,8 +31,15 @@ export class WindowsPage {
     public socket: Socket,
     public loadingCtrl: LoadingController,
     public navParams: NavParams,
-    public _service: LoginService
+    public _service: ModifyService
   ) {
+    if (
+      JSON.parse(
+        localStorage.getItem("userData")
+      ).permissionLevel.toString() === "1"
+    ) {
+      this.modify = true;
+    }
     this.isToggled = true;
     this.socket.connect();
     var that = this;
@@ -69,7 +78,7 @@ export class WindowsPage {
 
     setTimeout(() => {
       loading.dismiss();
-    }, 3000);
+    }, 2000);
   }
 
   ionViewDidLoad() {}

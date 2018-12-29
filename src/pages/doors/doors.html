@@ -21,15 +21,16 @@
     <ion-item *ngFor="let item of DoorsSensors">
       <ion-label *ngIf="item[1] == 1"
         >{{ item[0].split("_")[0] }} {{ item[0].split("_")[1] }}
-        {{ item[0].split("_")[2] }} is open</ion-label
+        {{ item[0].split("_")[2] }} is opened</ion-label
       >
       <ion-label *ngIf="item[1] == 0"
         >{{ item[0].split("_")[0] }} {{ item[0].split("_")[1] }}
-        {{ item[0].split("_")[2] }} is close</ion-label
+        {{ item[0].split("_")[2] }} is closed</ion-label
       >
       <ion-toggle
         [ngModel]="!item[2]"
         (ionChange)="changeDoor(item[0], item[1], item[3])"
+        disabled="{{ modify }}"
       ></ion-toggle>
     </ion-item>
   </ion-list>
