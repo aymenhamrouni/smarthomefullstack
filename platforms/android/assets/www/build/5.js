@@ -30,12 +30,12 @@ var AccesoPageModule = (function () {
 AccesoPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__acceso__["a" /* AccesoPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__acceso__["a" /* AddUserPage */]),
         ],
     })
 ], AccesoPageModule);
 
-//# sourceMappingURL=acceso.module.js.map
+//# sourceMappingURL=addUser.module.js.map
 
 /***/ })
 

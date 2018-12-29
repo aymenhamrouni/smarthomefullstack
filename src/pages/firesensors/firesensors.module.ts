@@ -1,13 +1,9 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { FiresensorsPage } from './firesensors';
+import { NgModule } from "@angular/core";
+import { IonicPageModule } from "ionic-angular";
+import { FiresensorsPage } from "./firesensors";
 
 @NgModule({
-  declarations: [
-    FiresensorsPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(FiresensorsPage),
-  ],
+  declarations: [FiresensorsPage],
+  imports: [IonicPageModule.forChild(FiresensorsPage)]
 })
 export class FiresensorsPageModule {}

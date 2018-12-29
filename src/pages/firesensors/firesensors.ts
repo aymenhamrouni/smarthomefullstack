@@ -28,7 +28,7 @@ export class FiresensorsPage {
   @ViewChild("container", { read: ElementRef }) container: ElementRef;
   @ViewChild("container1", { read: ElementRef }) container1: ElementRef;
   @ViewChild("container2", { read: ElementRef }) container2: ElementRef;
-
+  showImage: boolean = true;
   constructor(
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
@@ -40,9 +40,13 @@ export class FiresensorsPage {
     this.carbDuo = navParams.get("duo");
     this.temp = navParams.get("temp");
     this.socket.connect();
-    this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
-      this.temp = JSON.parse(msg.payload).Temp;
-    });
+
+    this.socket.on(
+      JSON.parse(localStorage.getItem("userData")).homeId.toString(),
+      msg => {
+        this.temp = JSON.parse(msg.payload).Temp;
+      }
+    );
     if (this.carbMono == 0) {
       let loading = this.loadingCtrl.create({
         spinner: "ios",
@@ -174,9 +178,12 @@ export class FiresensorsPage {
         setInterval(function() {
           var point = chart.series[0].points[0],
             newVal;
-          this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
-            this.carbMono = JSON.parse(msg.payload).CarbonMonoxide;
-          });
+          this.socket.on(
+            JSON.parse(localStorage.getItem("userData")).homeId.toString(),
+            msg => {
+              this.carbMono = JSON.parse(msg.payload).CarbonMonoxide;
+            }
+          );
 
           newVal = this.carbMono;
           this.data = newVal;
@@ -300,9 +307,12 @@ export class FiresensorsPage {
         setInterval(function() {
           var point = chart.series[0].points[0],
             newVal;
-          this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
-            this.carbDuo = JSON.parse(msg.payload).CarbonDioxide;
-          });
+          this.socket.on(
+            JSON.parse(localStorage.getItem("userData")).homeId.toString(),
+            msg => {
+              this.carbDuo = JSON.parse(msg.payload).CarbonDioxide;
+            }
+          );
 
           newVal = this.carbDuo;
           point.update(newVal);

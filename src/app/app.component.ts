@@ -2,7 +2,6 @@ import { VisitsPage } from "./../pages/visits/visits";
 import { HomePage } from "./../pages/home/home";
 import { Component, ViewChild } from "@angular/core";
 import { Platform, Nav } from "ionic-angular";
-
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { Keyboard } from "@ionic-native/keyboard";
@@ -10,6 +9,7 @@ import { Keyboard } from "@ionic-native/keyboard";
 import { LoginPage } from "../pages/login/login";
 import { LocalWeatherPage } from "../pages/local-weather/local-weather";
 import { Socket } from "ng-socket-io";
+import { AddUserPage } from "../pages/addUser/addUser";
 
 export interface MenuItem {
   title: string;
@@ -81,7 +81,7 @@ export class MyApp {
     this.nav.setRoot(HomePage);
   }
 
-  registroVisitas() {
-    this.nav.setRoot(VisitsPage);
+  addUser() {
+    this.nav.push(AddUserPage);
   }
 }

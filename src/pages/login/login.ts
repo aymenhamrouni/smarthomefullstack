@@ -23,7 +23,7 @@ export class LoginPage {
   errorMsj: string;
   user: any = {};
   r: boolean;
-  validToken : String;
+  validToken: String;
   constructor(
     public navParams: NavParams,
     public nav: NavController,
@@ -39,32 +39,27 @@ export class LoginPage {
     this._global.UserLocation = null;
     this.menu.swipeEnable(false);
     console.log(navParams.get("willingly"));
-  
-var that = this;
-if(localStorage.getItem("userData")){
-    this._service.CheckUser().subscribe((result)=>{
-      console.log("result = ",result.ValidJWT);
-      that.validToken=result.ValidJWT;
-      if (localStorage.getItem("userData")&&(that.validToken==="True")) {
 
-        that.nav.setRoot(HomePage);
-      } else if (
-        (!localStorage.getItem("UserId") && (!navParams.get("willingly")))
-      ) {
-        
-        that.nav.setRoot(RegisterPage);
-      }
-    });
-  };
+    var that = this;
+    if (localStorage.getItem("userData")) {
+      this._service.CheckUser().subscribe(result => {
+        console.log("result = ", result.ValidJWT);
+        that.validToken = result.ValidJWT;
+        if (localStorage.getItem("userData") && that.validToken === "True") {
+          that.nav.setRoot(HomePage);
+        } else if (
+          !localStorage.getItem("UserId") &&
+          !navParams.get("willingly")
+        ) {
+          that.nav.setRoot(RegisterPage);
+        }
+      });
+    }
     /* setTimeout(function(){
     
   },500); */
-    
   }
-  ionViewDidLoad() {
-
-   
-  }
+  ionViewDidLoad() {}
 
   loadingCreate() {
     this.loader = this.loading.create({
@@ -124,7 +119,7 @@ if(localStorage.getItem("userData")){
   forgotPass() {
     let forgot = this.forgotCtrl.create({
       title: "Olvido su contraseña?",
-      message: "Ingrese su email para recordarle sus credenciales de acceso.",
+      message: "Ingrese su email para recordarle sus credenciales de addUser.",
       inputs: [
         {
           name: "email",

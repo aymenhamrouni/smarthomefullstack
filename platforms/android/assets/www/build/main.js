@@ -236,7 +236,7 @@ VisitsPage = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccesoPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddUserPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_global__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_visit__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__codigo_qr_codigo_qr__ = __webpack_require__(96);
@@ -260,8 +260,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AccesoPage = (function () {
-    function AccesoPage(nav, navParams, alertCtrl, toastCtrl, _service, _global) {
+var AddUserPage = (function () {
+    function AddUserPage(nav, navParams, alertCtrl, toastCtrl, _service, _global) {
         this.nav = nav;
         this.navParams = navParams;
         this.alertCtrl = alertCtrl;
@@ -293,20 +293,20 @@ var AccesoPage = (function () {
             expirationDate: new __WEBPACK_IMPORTED_MODULE_6__angular_forms__["a" /* FormControl */]('')
         });
     }
-    AccesoPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AccesoPage');
+    AddUserPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AddUserPage');
     };
     // to go account page
-    AccesoPage.prototype.goToAccount = function () {
+    AddUserPage.prototype.goToAccount = function () {
         this.nav.push(__WEBPACK_IMPORTED_MODULE_3__settings_settings__["a" /* SettingsPage */]);
     };
-    AccesoPage.prototype.configuraFechas = function (tipo) {
+    AddUserPage.prototype.configuraFechas = function (tipo) {
         if (tipo == 1)
             this.recurrente = false;
         if (tipo == 2)
             this.recurrente = true;
     };
-    AccesoPage.prototype.CrearVisita = function () {
+    AddUserPage.prototype.CrearVisita = function () {
         var _this = this;
         if (this.Validate()) {
             this._service.CreateVisit(this.visit).subscribe(function (d) {
@@ -332,7 +332,7 @@ var AccesoPage = (function () {
             this.useToast('Favor de capturar los campos requeridos marcados con *', 3000);
         }
     };
-    AccesoPage.prototype.Validate = function () {
+    AddUserPage.prototype.Validate = function () {
         console.log(this.accesoForm.invalid);
         if (this.accesoForm.invalid)
             return false;
@@ -363,7 +363,7 @@ var AccesoPage = (function () {
             }
         }
     };
-    AccesoPage.prototype.configuraObjetoVisita = function () {
+    AddUserPage.prototype.configuraObjetoVisita = function () {
         this.visit = {
             Id: 0,
             QRGuid: '',
@@ -379,7 +379,7 @@ var AccesoPage = (function () {
             ExpirationDate: this.accesoForm.controls.expirationDate.value != '' ? this.accesoForm.controls.expirationDate.value : '2000-01-01'
         };
     };
-    AccesoPage.prototype.useToast = function (msg, time) {
+    AddUserPage.prototype.useToast = function (msg, time) {
         var toast = this.toastCtrl.create({
             message: msg,
             duration: time,
@@ -390,7 +390,7 @@ var AccesoPage = (function () {
         });
         toast.present();
     };
-    AccesoPage.prototype.confirmResponse = function (data) {
+    AddUserPage.prototype.confirmResponse = function (data) {
         console.log('server response:' + data);
         if (data.qrGuid != '') {
             this.useToast('¡Registro creado correctamente!', 5000);
@@ -401,11 +401,11 @@ var AccesoPage = (function () {
             return false;
         }
     };
-    AccesoPage.prototype.acortaFecha = function (str) {
+    AddUserPage.prototype.acortaFecha = function (str) {
         str = str.substring(0, str.indexOf('T') - 1);
         return str;
     };
-    AccesoPage.prototype.formatDate = function (f) {
+    AddUserPage.prototype.formatDate = function (f) {
         var date = new Date(f);
         var monthNames = [
             "Ene", "Feb", "Mar",
@@ -418,16 +418,16 @@ var AccesoPage = (function () {
         var year = date.getFullYear();
         return day + ' ' + monthNames[monthIndex] + ' ' + year;
     };
-    return AccesoPage;
+    return AddUserPage;
 }());
-AccesoPage = __decorate([
+AddUserPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["Component"])({
-        selector: 'page-acceso',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\acceso\acceso.html"*/'<ion-header>\n  <ion-navbar color="secondary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <p>{{location}}</p>\n    </ion-title>\n<!--     <ion-buttons end>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n<!-- -->\n<ion-content padding class="animated fadeIn form-page">\n  <div text-center class="animated fadeInDown">\n    <h5 ion-text class="text-primary">\n      <strong>Registro de Visitas</strong>\n    </h5>\n  </div>\n  <!-- Login form -->\n  <div class="list-form" [formGroup]="accesoForm">\n\n    <ion-list radio-group formControlName="type">\n      <ion-item>\n        <ion-label>Tipo de Visita *</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label>Visita Unica</ion-label>\n        <ion-radio value="1" (click)="configuraFechas(1)" checked></ion-radio>\n      </ion-item>\n      <ion-item>\n        <ion-label>Visita Recurrente</ion-label>\n        <ion-radio value="2" (click)="configuraFechas(2)"></ion-radio>\n      </ion-item>\n      <!--<ion-item>\n                  <ion-label>Visita Grupal</ion-label>\n                  <ion-radio value="3" (click)="configuraFechas(3)"></ion-radio>\n                </ion-item>-->\n    </ion-list>\n\n    <ion-item>\n      <ion-label floating>\n        <ion-icon name="person" item-start class="text-primary"></ion-icon>\n        Nombre *\n      </ion-label>\n      <ion-input type="text" formControlName="name"></ion-input>\n    </ion-item>\n \n    <ion-item>        \n      <ion-label floating>\n        <ion-icon name="car" item-start class="text-primary"></ion-icon>\n        Auto        \n      </ion-label>\n      <ion-input type="text" formControlName="car"></ion-input> \n    </ion-item>\n\n    <ion-item>        \n      <ion-label floating>\n        <ion-icon name="barcode" item-start class="text-primary"></ion-icon>\n        Placas\n      </ion-label>\n      <ion-input type="text" formControlName="plates"></ion-input> \n    </ion-item>\n\n    <ion-item>        \n        <ion-label>\n          No se los datos / Sin Vehículo\n        </ion-label>\n        <ion-checkbox id="naVehiculo"></ion-checkbox>\n    </ion-item>\n\n    <ion-item [hidden]=recurrente>\n      <ion-label floating>\n        Fecha de Visita *\n        <ion-icon name="calendar" item-start class="text-primary"></ion-icon>\n      </ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="visitDate"></ion-datetime>\n    </ion-item>\n\n    <ion-item [hidden]=!recurrente>\n      <ion-label floating>\n        Fecha de Inicio *\n        <ion-icon name="calendar" item-start class="text-primary"></ion-icon>\n      </ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="initialDate"></ion-datetime>\n    </ion-item>\n\n    <ion-item [hidden]=!recurrente>\n      <ion-label floating>\n        Fecha de Fin *\n        <ion-icon name="calendar" item-start class="text-primary"></ion-icon>\n      </ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="expirationDate"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>\n        <ion-icon name="reorder" item-start class="text-primary"></ion-icon>\n        Notas\n      </ion-label>\n      <ion-input type="text" formControlName="notes"></ion-input>\n    </ion-item>\n\n    <div>\n      <button ion-button icon-start block color="dark" tappable (click)="CrearVisita()">\n        <ion-icon name="log-in"></ion-icon>\n        REGISTRAR\n      </button>\n\n    </div>\n\n  </div>\n</ion-content>'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\acceso\acceso.html"*/,
+        selector: 'page-addUser',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\addUser\addUser.html"*/'<ion-header>\n  <ion-navbar color="secondary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <p>{{location}}</p>\n    </ion-title>\n<!--     <ion-buttons end>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n<!-- -->\n<ion-content padding class="animated fadeIn form-page">\n  <div text-center class="animated fadeInDown">\n    <h5 ion-text class="text-primary">\n      <strong>Registro de Visitas</strong>\n    </h5>\n  </div>\n  <!-- Login form -->\n  <div class="list-form" [formGroup]="accesoForm">\n\n    <ion-list radio-group formControlName="type">\n      <ion-item>\n        <ion-label>Tipo de Visita *</ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label>Visita Unica</ion-label>\n        <ion-radio value="1" (click)="configuraFechas(1)" checked></ion-radio>\n      </ion-item>\n      <ion-item>\n        <ion-label>Visita Recurrente</ion-label>\n        <ion-radio value="2" (click)="configuraFechas(2)"></ion-radio>\n      </ion-item>\n      <!--<ion-item>\n                  <ion-label>Visita Grupal</ion-label>\n                  <ion-radio value="3" (click)="configuraFechas(3)"></ion-radio>\n                </ion-item>-->\n    </ion-list>\n\n    <ion-item>\n      <ion-label floating>\n        <ion-icon name="person" item-start class="text-primary"></ion-icon>\n        Nombre *\n      </ion-label>\n      <ion-input type="text" formControlName="name"></ion-input>\n    </ion-item>\n \n    <ion-item>        \n      <ion-label floating>\n        <ion-icon name="car" item-start class="text-primary"></ion-icon>\n        Auto        \n      </ion-label>\n      <ion-input type="text" formControlName="car"></ion-input> \n    </ion-item>\n\n    <ion-item>        \n      <ion-label floating>\n        <ion-icon name="barcode" item-start class="text-primary"></ion-icon>\n        Placas\n      </ion-label>\n      <ion-input type="text" formControlName="plates"></ion-input> \n    </ion-item>\n\n    <ion-item>        \n        <ion-label>\n          No se los datos / Sin Vehículo\n        </ion-label>\n        <ion-checkbox id="naVehiculo"></ion-checkbox>\n    </ion-item>\n\n    <ion-item [hidden]=recurrente>\n      <ion-label floating>\n        Fecha de Visita *\n        <ion-icon name="calendar" item-start class="text-primary"></ion-icon>\n      </ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="visitDate"></ion-datetime>\n    </ion-item>\n\n    <ion-item [hidden]=!recurrente>\n      <ion-label floating>\n        Fecha de Inicio *\n        <ion-icon name="calendar" item-start class="text-primary"></ion-icon>\n      </ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="initialDate"></ion-datetime>\n    </ion-item>\n\n    <ion-item [hidden]=!recurrente>\n      <ion-label floating>\n        Fecha de Fin *\n        <ion-icon name="calendar" item-start class="text-primary"></ion-icon>\n      </ion-label>\n      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="expirationDate"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>\n        <ion-icon name="reorder" item-start class="text-primary"></ion-icon>\n        Notas\n      </ion-label>\n      <ion-input type="text" formControlName="notes"></ion-input>\n    </ion-item>\n\n    <div>\n      <button ion-button icon-start block color="dark" tappable (click)="CrearVisita()">\n        <ion-icon name="log-in"></ion-icon>\n        REGISTRAR\n      </button>\n\n    </div>\n\n  </div>\n</ion-content>'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\addUser\addUser.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_5_ionic_angular__["l" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1__services_visit__["a" /* VisitService */], __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]])
-], AccesoPage);
+], AddUserPage);
 
-//# sourceMappingURL=acceso.js.map
+//# sourceMappingURL=addUser.js.map
 
 /***/ }),
 
@@ -834,7 +834,7 @@ var ErrorService = (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"../pages/acceso/acceso.module": [
+	"../pages/addUser/addUser.module": [
 <<<<<<< HEAD
 		750,
 =======
@@ -1274,7 +1274,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_21__pages_local_weather_local_weather__["a" /* LocalWeatherPage */],
             __WEBPACK_IMPORTED_MODULE_19__pages_notifications_notifications__["a" /* NotificationsPage */],
             __WEBPACK_IMPORTED_MODULE_20__pages_register_register__["a" /* RegisterPage */],
-            __WEBPACK_IMPORTED_MODULE_22__pages_acceso_acceso__["a" /* AccesoPage */],
+            __WEBPACK_IMPORTED_MODULE_22__pages_acceso_acceso__["a" /* AddUserPage */],
             __WEBPACK_IMPORTED_MODULE_3__pages_codigo_qr_codigo_qr__["a" /* CodigoQrPage */],
             __WEBPACK_IMPORTED_MODULE_0__pages_visits_visits__["a" /* VisitsPage */],
             __WEBPACK_IMPORTED_MODULE_27__pages_streamfeed_streamfeed__["a" /* StreamfeedPage */],
@@ -1292,7 +1292,7 @@ AppModule = __decorate([
                 autoFocusAssist: false
             }, {
                 links: [
-                    { loadChildren: '../pages/acceso/acceso.module#AccesoPageModule', name: 'AccesoPage', segment: 'acceso', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/addUser/addUser.module#AccesoPageModule', name: 'AddUserPage', segment: 'addUser', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/codigo-qr/codigo-qr.module#CodigoQrPageModule', name: 'CodigoQrPage', segment: 'codigo-qr', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/firesensors/firesensors.module#FiresensorsPageModule', name: 'FiresensorsPage', segment: 'firesensors', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
@@ -1315,7 +1315,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_21__pages_local_weather_local_weather__["a" /* LocalWeatherPage */],
             __WEBPACK_IMPORTED_MODULE_19__pages_notifications_notifications__["a" /* NotificationsPage */],
             __WEBPACK_IMPORTED_MODULE_20__pages_register_register__["a" /* RegisterPage */],
-            __WEBPACK_IMPORTED_MODULE_22__pages_acceso_acceso__["a" /* AccesoPage */],
+            __WEBPACK_IMPORTED_MODULE_22__pages_acceso_acceso__["a" /* AddUserPage */],
             __WEBPACK_IMPORTED_MODULE_3__pages_codigo_qr_codigo_qr__["a" /* CodigoQrPage */],
             __WEBPACK_IMPORTED_MODULE_0__pages_visits_visits__["a" /* VisitsPage */],
             __WEBPACK_IMPORTED_MODULE_27__pages_streamfeed_streamfeed__["a" /* StreamfeedPage */],
@@ -1451,8 +1451,8 @@ var HomePage = (function () {
         this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_7__firesensors_firesensors__["a" /* FiresensorsPage */], { mono: this.Mono, duo: this.Duo, temp: this.Temp });
     };
     // go to register page
-    HomePage.prototype.acceso = function () {
-        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_1__acceso_acceso__["a" /* AccesoPage */]);
+    HomePage.prototype.addUser = function () {
+        this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_1__acceso_acceso__["a" /* AddUserPage */]);
     };
     HomePage.prototype.notify = function () {
         this._service.PostDoor({ WindowsSensors: Number(this.isToggled).toString() }, JSON.parse(localStorage.getItem("userData")).accessToken).subscribe(function (d) {
@@ -1463,9 +1463,9 @@ var HomePage = (function () {
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
 <<<<<<< HEAD
-        selector: 'page-home',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\home\home.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="secondary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <p>Smart Home Security</p>\n    </ion-title>\n<!--     <ion-buttons end>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <button ion-button full tappable (click)="acceso()">\n    <ion-icon name="key"></ion-icon>\n    <div style="padding-left: 100px">Conceder Acceso</div>\n  </button>\n\n\n\n  \n    <div cards>\n\n        <div class="grid-full">\n          <ion-row>\n            <ion-col>\n             \n                \n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/cameras.png"/>\n              \n                \n      <div  class="image" >Surveillance Cameras</div>\n              \n            </ion-col>\n    \n            <ion-col>\n                <img  class="image" (click)="goToFireSensor()" src="../../assets/img/fire.png"/>\n                <div  class="image" >Fire Sensors Stats</div>\n                 </ion-col> \n    \n            <ion-col>\n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/doors.png"/>\n                <div  class="image" >Doors Sensors Stats</div>\n            </ion-col>\n    \n            <ion-col>\n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/windows.png"/>\n                <div  class="image" >Winsows Sensors Stats</div>\n            </ion-col>\n          </ion-row>\n        </div>\n    \n      </div>\n      <ion-list>\n\n        <ion-item>\n          <ion-label>Doors Sensor Status</ion-label>\n          <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n        </ion-item>\n      \n      </ion-list>\n\n\n\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\home\home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\home\home.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="secondary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <p>Smart Home Security</p>\n    </ion-title>\n<!--     <ion-buttons end>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <button ion-button full tappable (click)="addUser()">\n    <ion-icon name="key"></ion-icon>\n    <div style="padding-left: 100px">Conceder Acceso</div>\n  </button>\n\n\n\n  \n    <div cards>\n\n        <div class="grid-full">\n          <ion-row>\n            <ion-col>\n             \n                \n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/cameras.png"/>\n              \n                \n      <div  class="image" >Surveillance Cameras</div>\n              \n            </ion-col>\n    \n            <ion-col>\n                <img  class="image" (click)="goToFireSensor()" src="../../assets/img/fire.png"/>\n                <div  class="image" >Fire Sensors Stats</div>\n                 </ion-col> \n    \n            <ion-col>\n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/doors.png"/>\n                <div  class="image" >Doors Sensors Stats</div>\n            </ion-col>\n    \n            <ion-col>\n                <img  class="image" (click)="goToStreamFeed()" src="../../assets/img/windows.png"/>\n                <div  class="image" >Winsows Sensors Stats</div>\n            </ion-col>\n          </ion-row>\n        </div>\n    \n      </div>\n      <ion-list>\n\n        <ion-item>\n          <ion-label>Doors Sensor Status</ion-label>\n          <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n        </ion-item>\n      \n      </ion-list>\n\n\n\n</ion-content>\n'/*ion-inline-end:"D:\Lertek_HomeSecurity_MobileApp-master\src\pages\home\home.html"*/
 =======
-        selector: "page-home",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Smart Home Security</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <!--   <button ion-button full tappable (click)="acceso()">\n\n    <ion-icon name="key"></ion-icon>\n\n    <div style="padding-left: 100px">Conceder Acceso</div>\n\n  </button> -->\n\n\n\n  <div cards>\n\n    <div class="grid-full">\n\n      <ion-row>\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/cameras.png"\n\n          />\n\n\n\n          <div class="image">Surveillance Cameras</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToFireSensor()"\n\n            src="assets/img/fire.png"\n\n          />\n\n          <div class="image">Fire Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/doors.png"\n\n          />\n\n          <div class="image">Doors Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/windows.png"\n\n          />\n\n          <div class="image">Winsows Sensors Stats</div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label>Doors Sensor Status</ion-label>\n\n      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/
+        selector: "page-home",template:/*ion-inline-start:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/'<!-- -->\n\n<ion-header>\n\n  <ion-navbar color="secondary">\n\n    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>\n\n    <ion-title> <p>Smart Home Security</p> </ion-title>\n\n    <!--     <ion-buttons end>\n\n      <button ion-button tappable (click)="goToAccount()">\n\n        <ion-icon name="cog"></ion-icon>\n\n      </button>\n\n    </ion-buttons> -->\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <!--   <button ion-button full tappable (click)="addUser()">\n\n    <ion-icon name="key"></ion-icon>\n\n    <div style="padding-left: 100px">Conceder Acceso</div>\n\n  </button> -->\n\n\n\n  <div cards>\n\n    <div class="grid-full">\n\n      <ion-row>\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/cameras.png"\n\n          />\n\n\n\n          <div class="image">Surveillance Cameras</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToFireSensor()"\n\n            src="assets/img/fire.png"\n\n          />\n\n          <div class="image">Fire Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/doors.png"\n\n          />\n\n          <div class="image">Doors Sensors Stats</div>\n\n        </ion-col>\n\n\n\n        <ion-col>\n\n          <img\n\n            class="image"\n\n            (click)="goToStreamFeed()"\n\n            src="assets/img/windows.png"\n\n          />\n\n          <div class="image">Winsows Sensors Stats</div>\n\n        </ion-col>\n\n      </ion-row>\n\n    </div>\n\n  </div>\n\n  <ion-list>\n\n    <ion-item>\n\n      <ion-label>Doors Sensor Status</ion-label>\n\n      <ion-toggle [(ngModel)]="isToggled" (ionChange)="notify()"></ion-toggle>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\projet aim\smarthomefullstack\src\pages\home\home.html"*/
 >>>>>>> 20e15ba0ca80d77103d3c9449727d60e2b2375da
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_9__services_login__["a" /* LoginService */], __WEBPACK_IMPORTED_MODULE_8_ng_socket_io__["Socket"], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_0__services_global__["a" /* GlobalService */]])
@@ -1678,7 +1678,7 @@ var LoginPage = (function () {
         var _this = this;
         var forgot = this.forgotCtrl.create({
             title: "Olvido su contraseña?",
-            message: "Ingrese su email para recordarle sus credenciales de acceso.",
+            message: "Ingrese su email para recordarle sus credenciales de addUser.",
             inputs: [
                 {
                     name: "email",

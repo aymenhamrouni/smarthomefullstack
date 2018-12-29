@@ -4,6 +4,7 @@ import { ModifyService } from "./../services/modify";
 import { VisitService } from "./../services/visit";
 import { CodigoQrPage } from "./../pages/codigo-qr/codigo-qr";
 import { LoginService } from "./../services/login";
+import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { NgModule } from "@angular/core";
 import { IonicApp, IonicModule } from "ionic-angular";
@@ -21,7 +22,7 @@ import { LoginPage } from "../pages/login/login";
 import { NotificationsPage } from "../pages/notifications/notifications";
 import { RegisterPage } from "../pages/register/register";
 import { LocalWeatherPage } from "../pages/local-weather/local-weather";
-import { AccesoPage } from "../pages/acceso/acceso";
+import { AddUserPage } from "../pages/addUser/addUser";
 import { HttpModule } from "@angular/http";
 import { QRCodeModule } from "angularx-qrcode";
 import { SocialSharing } from "@ionic-native/social-sharing";
@@ -29,6 +30,8 @@ import { Screenshot } from "@ionic-native/screenshot";
 import { StreamfeedPage } from "../pages/streamfeed/streamfeed";
 import { FiresensorsPage } from "../pages/firesensors/firesensors";
 import { SocketIoModule, SocketIoConfig } from "ng-socket-io";
+import { DoorsPage } from "../pages/doors/doors";
+import { WindowsPage } from "../pages/windows/windows";
 const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
 
 @NgModule({
@@ -40,13 +43,16 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
     LocalWeatherPage,
     NotificationsPage,
     RegisterPage,
-    AccesoPage,
+    AddUserPage,
     CodigoQrPage,
     VisitsPage,
     StreamfeedPage,
-    FiresensorsPage
+    FiresensorsPage,
+    DoorsPage,
+    WindowsPage
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -72,11 +78,13 @@ const config: SocketIoConfig = { url: "http://localhost:3000", options: {} };
     LocalWeatherPage,
     NotificationsPage,
     RegisterPage,
-    AccesoPage,
+    AddUserPage,
     CodigoQrPage,
     VisitsPage,
     StreamfeedPage,
-    FiresensorsPage
+    FiresensorsPage,
+    DoorsPage,
+    WindowsPage
   ],
   providers: [
     StatusBar,

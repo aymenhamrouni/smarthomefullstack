@@ -4,6 +4,7 @@ import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Rx";
 import { Injectable } from "@angular/core";
 import { ErrorService } from "./error";
+import { skip } from "rxjs/operator/skip";
 
 @Injectable()
 export class LoginService extends ErrorService {
@@ -49,11 +50,10 @@ export class LoginService extends ErrorService {
       .pipe(
         map((response: Response) => {
           let newData = JSON.parse(localStorage.getItem("userData"));
-          console.log(response.json().access_token,"aa");
-          newData.accessToken=response.json().access_token;
-          console.log(newData,"Rami");
-          localStorage.setItem("userData",JSON.stringify(newData));
-
+          console.log(response.json().access_token, "aa");
+          newData.accessToken = response.json().access_token;
+          console.log(newData, "Rami");
+          localStorage.setItem("userData", JSON.stringify(newData));
         }),
         catchError(this.handleError)
       )
@@ -61,7 +61,24 @@ export class LoginService extends ErrorService {
   }
 
   RegisterUser(IUser): Observable<any> {
-    return this._http.post(environment.endpoint  + '/users', IUser).pipe(
+    return this._http
+      .post(environment.endpoint + "/users", IUser)
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError(this.handleError)
+      )
+      .do(response => console.log(response));
+  }
+  AddUser(IUser): Observable<any> {
+    var headers = new Headers({
+      authorization:
+        "Bearer " +
+        JSON.parse(localStorage.getItem("userData")).accessToken.toString()
+    });
+    var options = new RequestOptions({ headers: headers });
+    return this._http
+      .post(environment.endpoint + "/users/add", IUser, options)
+      .pipe(
         map((response: Response) => response.json()),
         catchError(this.handleError)
       )
@@ -69,33 +86,43 @@ export class LoginService extends ErrorService {
   }
 
   CheckUser(): Observable<any> {
-     var headers = new Headers({
+    var headers = new Headers({
       authorization:
         "Bearer " +
         JSON.parse(localStorage.getItem("userData")).accessToken.toString()
-        
-    }); 
+    });
     var options = new RequestOptions({ headers: headers });
 
     return this._http
-      .post(
-        environment.endpoint + "/users/check",
-        {},
-        options
-      ).pipe(
-        map((response: Response) => response.json())
-      )
+      .post(environment.endpoint + "/users/check", {}, options)
+      .pipe(map((response: Response) => response.json()));
   }
 
-  PostDoor(IUser,token): Observable<any> {
-    this.headers = new Headers({'authorization': "Bearer "+token.toString() });
+  PostDoor(IUser, token): Observable<any> {
+    this.headers = new Headers({ authorization: "Bearer " + token.toString() });
+    console.log(this.headers);
+    this.options = new RequestOptions({ headers: this.headers });
+    console.log(this.headers);
+    return this._http
+      .post(environment.endpoint + "/values", IUser, this.options)
+      .pipe(
+        map((response: Response) => response),
+        catchError(this.handleError)
+      )
+      .do(response => console.log(response));
+  }
+  PostAlarm(IUser, token): Observable<any> {
+    this.headers = new Headers({ authorization: "Bearer " + token.toString() });
 
     this.options = new RequestOptions({ headers: this.headers });
     console.log(this.headers);
-    return this._http.post(environment.endpoint  + '/values', IUser ,this.options).pipe(
+    return this._http
+      .post(environment.endpoint + "/values", IUser, this.options)
+      .pipe(
         map((response: Response) => response),
         catchError(this.handleError)
-    ).do(response => console.log(response));
+      )
+      .do(response => console.log(response));
   }
 
   RecoverPassword(email): Observable<any> {
@@ -110,10 +137,4 @@ export class LoginService extends ErrorService {
       )
       .do(response => console.log(response));
   }
-
 }
-
-
-
-
-

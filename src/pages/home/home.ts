@@ -1,13 +1,15 @@
 import { GlobalService } from "./../../services/global";
-import { AccesoPage } from "./../acceso/acceso";
+import { AddUserPage } from "./../addUser/addUser";
 import { Component } from "@angular/core";
-import { NavController, PopoverController } from "ionic-angular";
+import { NavController, PopoverController, Nav } from "ionic-angular";
 import { NotificationsPage } from "../notifications/notifications";
 import { SettingsPage } from "../settings/settings";
 import { StreamfeedPage } from "./../streamfeed/streamfeed";
 import { FiresensorsPage } from "../firesensors/firesensors";
 import { Socket } from "ng-socket-io";
 import { LoginService } from "./../../services/login";
+import { DoorsPage } from "../doors/doors";
+import { WindowsPage } from "../windows/windows";
 
 @Component({
   selector: "page-home",
@@ -15,9 +17,11 @@ import { LoginService } from "./../../services/login";
 })
 export class HomePage {
   public isToggled: boolean;
-  refresh : boolean=true;
+  WindowsSensors = [];
+  DoorsSensors = [];
+  refresh: boolean = true;
   Home = {
-    WindowsSensors_1: ""
+    Alarm: ""
   };
   Mono: number = 0;
   Duo: number = 0;
@@ -25,44 +29,55 @@ export class HomePage {
   username = this._global.UserName;
   location = this._global.UserLocation;
 
-  constructor(private _service: LoginService,private socket: Socket,public nav: NavController, public popoverCtrl: PopoverController, public _global: GlobalService) {
-  
-    
-  }
+  constructor(
+    private _service: LoginService,
+    private socket: Socket,
+    public nav: NavController,
+    public popoverCtrl: PopoverController,
+    public _global: GlobalService
+  ) {}
 
   ionViewDidLoad() {
-  this.isToggled = false;
+    this.isToggled = false;
     this.socket.connect();
-    this.socket.on(JSON.parse(localStorage.getItem("userData")).homeId.toString(), msg => {
-      this.Home.WindowsSensors_1 = JSON.parse(msg.payload).WindowsSensors_1;
-      if(this.refresh) {
+    var that = this;
+    this.socket.on(
+      JSON.parse(localStorage.getItem("userData")).homeId.toString(),
+      msg => {
+        that.WindowsSensors = [];
+        that.DoorsSensors = [];
+        for (var i in JSON.parse(msg.payload)) {
+          if (i.endsWith("Window")) {
+            that.WindowsSensors.push([i, JSON.parse(msg.payload)[i]]);
+          } else if (i.endsWith("Door")) {
+            that.DoorsSensors.push([i, JSON.parse(msg.payload)[i]]);
+          }
+        }
 
-      
-      if (this.Home.WindowsSensors_1.toString() === "0") {
-        this.isToggled = false;
-      } else {
-        this.isToggled = true;
+        console.log(that.WindowsSensors);
+
+        this.Home.Alarm = JSON.parse(msg.payload).Alarm;
+        if (this.refresh) {
+          if (this.Home.Alarm.toString() === "0") {
+            this.isToggled = false;
+          } else {
+            this.isToggled = true;
+          }
+        }
+        this.Mono = JSON.parse(msg.payload).CarbonMonoxide;
+        this.Duo = JSON.parse(msg.payload).CarbonDioxide;
+        this.Temp = JSON.parse(msg.payload).Temp;
+        console.log(msg);
       }
-    }
-      this.Mono = JSON.parse(msg.payload).CarbonMonoxide;
-      this.Duo = JSON.parse(msg.payload).CarbonDioxide;
-      this.Temp = JSON.parse(msg.payload).Temp;
-      console.log(msg);
-    });
-    var that=this;
+    );
+    var that = this;
     setInterval(function() {
       //console.log(JSON.parse(localStorage.getItem("userData")).refreshToken.toString());
       //console.log(JSON.parse(localStorage.getItem("userData")).RefreshToken)
-      if(localStorage.getItem("userData")) 
-      {
-        that._service
-        .RefreshToken(
-        )
-        .subscribe(d => {}); 
+      if (localStorage.getItem("userData")) {
+        that._service.RefreshToken().subscribe(d => {});
       }
-     
     }, 7000);
-
   }
 
   // to go account page
@@ -89,20 +104,19 @@ export class HomePage {
   }
 
   // go to register page
-  acceso() {
-    this.nav.setRoot(AccesoPage);
+  addUser() {
+    this.nav.push(AddUserPage);
   }
 
   public notify() {
     this.refresh = false;
 
     let a: string =
-      JSON.parse(localStorage.getItem("userData")).homeId.toString() +
-      "_window_1";
+      JSON.parse(localStorage.getItem("userData")).homeId.toString() + "_alarm";
 
     this._service
-      .PostDoor(
-        { WindowsSensors: Number(this.isToggled).toString(), change: a },
+      .PostAlarm(
+        { NewValue: Number(this.isToggled).toString(), change: a },
         JSON.parse(localStorage.getItem("userData")).accessToken
       )
       .subscribe(d => {});
@@ -111,4 +125,32 @@ export class HomePage {
       that.refresh = true;
     }, 2000);
   }
+  goToDoors() {
+    //this.nav.push(DoorsPage, { DoorsSensors: this.DoorsSensors });
+    this.nav.push(DoorsPage);
+  }
+  goToWindows() {
+    this.nav.push(WindowsPage, { WindowsSensors: this.WindowsSensors });
+  }
 }
+
+/* public notify() {
+  this.refresh = false;
+
+  let a: string =
+    JSON.parse(localStorage.getItem("userData")).homeId.toString() +
+    "_window_1";
+
+  this._service
+    .PostDoor(
+      { WindowsSensors: Number(this.isToggled).toString(), change: a },
+      JSON.parse(localStorage.getItem("userData")).accessToken
+    )
+    .subscribe(d => {});
+  var that = this;
+  setTimeout(function() {
+    that.refresh = true;
+  }, 2000);
+}
+}
+ */
