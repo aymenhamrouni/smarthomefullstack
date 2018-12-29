@@ -77,7 +77,7 @@ export class LoginPage {
       } else {
         this.loader.dismiss();
         this.useToast(
-          "Your Credentials are incorrect ,Please verify it !",
+          "Your Credentials are incorrect, Please verify it !",
           5000
         );
       }
@@ -100,44 +100,6 @@ export class LoginPage {
   // login and go to home page
   login() {
     this.nav.setRoot(HomePage);
-  }
-
-  forgotPass() {
-    let forgot = this.forgotCtrl.create({
-      title: "Olvido su contraseña?",
-      message: "Ingrese su email para recordarle sus credenciales de addUser.",
-      inputs: [
-        {
-          name: "email",
-          placeholder: "Email",
-          type: "email"
-        }
-      ],
-      buttons: [
-        {
-          text: "Cancelar",
-          handler: data => {}
-        },
-        {
-          text: "Enviar",
-          handler: data => {
-            this.mandarCorreo(data);
-          }
-        }
-      ]
-    });
-    forgot.present();
-  }
-
-  mandarCorreo(data) {
-    this._service.RecoverPassword(data).subscribe(d => {
-      if (d != undefined) {
-        this.useToast(
-          "Se ha enviado un correo a la dirección indicada con sus credenciales. Favor de verificar.",
-          3000
-        );
-      }
-    });
   }
 
   useToast(msg, time) {

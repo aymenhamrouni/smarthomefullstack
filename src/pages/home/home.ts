@@ -51,7 +51,6 @@ export class HomePage {
       this.alarm = true;
     }
     var that = this;
-
     this.socket.on(
       JSON.parse(localStorage.getItem("userData")).homeId.toString(),
       msg => {
