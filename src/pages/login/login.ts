@@ -46,10 +46,16 @@ export class LoginPage {
           that.nav.setRoot(RegisterPage);
         }
       });
+    } else {
+      if (localStorage.getItem("userData") && that.validToken === "True") {
+        that.nav.setRoot(HomePage);
+      } else if (
+        !localStorage.getItem("UserId") &&
+        !navParams.get("willingly")
+      ) {
+        that.nav.setRoot(RegisterPage);
+      }
     }
-    /* setTimeout(function(){
-    
-  },500); */
   }
   ionViewDidLoad() {}
 
@@ -72,7 +78,7 @@ export class LoginPage {
       if (this.r) {
         this.loader.dismiss();
         localStorage.setItem("userData", JSON.stringify(d));
-        localStorage.setItem("userApp", "true");
+        localStorage.setItem("UserId", "true");
         this.nav.setRoot(HomePage);
       } else {
         this.loader.dismiss();
