@@ -109,7 +109,6 @@ export class RegisterPage {
   loadingCreate() {
     this.loader = this.loading.create({
       content: "Loading..."
-      //duration : 1500
     });
     return this.loader.present();
   }

@@ -2,7 +2,7 @@
   "name": "smart-home-security",
   "version": "1.0.0",
   "author": "Aymen Hamrouni & Rami Yousfi",
-  "homepage": "https://lertek.com",
+  "homepage": "https://supcom.tn",
   "scripts": {
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",

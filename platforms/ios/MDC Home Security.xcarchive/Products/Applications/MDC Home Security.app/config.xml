@@ -37,9 +37,9 @@
         <param name="ios-package" value="SocialSharing" />
         <param name="onload" value="true" />
     </feature>
-    <name>MDC Home Security</name>
+    <name>Smart Home Security</name>
     <description>Home Security Application</description>
-    <author email="jrodriguez@lertek.com" href="https://lertek.com">Lertek Technologies</author>
+    <author email="rami.yousfi@supcom.tn" href="www.supcom.tn">Smart Home Security Technologies</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

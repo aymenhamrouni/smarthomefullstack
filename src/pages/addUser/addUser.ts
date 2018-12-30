@@ -17,6 +17,7 @@ import { LoginService } from "../../services/login";
   templateUrl: "addUser.html"
 })
 export class AddUserPage {
+  homeId : string ;
   pageTitle = "AddUser";
   errorMsj: string;
   loader: any;
@@ -34,6 +35,7 @@ export class AddUserPage {
     public loading: LoadingController,
     private _service: LoginService
   ) {
+    this.homeId=JSON.parse(localStorage.getItem("userData")).homeId.toString();;
     this.addUserForm = new FormGroup({
       type: new FormControl("", Validators.required),
       userName: new FormControl("", Validators.required),
